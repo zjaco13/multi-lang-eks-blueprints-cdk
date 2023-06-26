@@ -2,9 +2,9 @@
 
 set -e
 
-PROTO_FILES=$(find . -name "*.proto")
+PROTO_FILES=$(find ./proto -name "*.proto")
 PROTO_DIR=proto
-GO_DIR=go
+GO_DIR=go/codegen
 TS_DIR=ts
 PY_DIR=python
 

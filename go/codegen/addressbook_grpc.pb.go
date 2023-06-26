@@ -4,7 +4,7 @@
 // - protoc             v4.23.3
 // source: addressbook.proto
 
-package proto_test
+package codegen
 
 import (
 	context "context"

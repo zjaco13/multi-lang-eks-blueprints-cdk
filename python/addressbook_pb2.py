@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11\x61\x64\x64ressbook.proto\x12\nproto_test\"\"\n\x0e\x41\x64\x64ressRequest\x12\x10\n\x08\x61reaCode\x18\x01 \x01(\x05\"\xf3\x01\n\x06Person\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x03\x61ge\x18\x02 \x01(\x05H\x00\x88\x01\x01\x12\n\n\x02id\x18\x03 \x01(\x05\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12.\n\x06phones\x18\x05 \x03(\x0b\x32\x1e.proto_test.Person.PhoneNumber\x1aI\n\x0bPhoneNumber\x12\x0e\n\x06number\x18\x01 \x01(\t\x12*\n\x04type\x18\x02 \x01(\x0e\x32\x1c.proto_test.Person.PhoneType\"+\n\tPhoneType\x12\n\n\x06MOBILE\x10\x00\x12\x08\n\x04HOME\x10\x01\x12\x08\n\x04WORK\x10\x02\x42\x06\n\x04_age\"C\n\x0b\x41\x64\x64ressBook\x12\x10\n\x08\x61reaCode\x18\x01 \x01(\x05\x12\"\n\x06people\x18\x02 \x03(\x0b\x32\x12.proto_test.Person2S\n\x0c\x46\x65tchAddress\x12\x43\n\nGetAddress\x12\x1a.proto_test.AddressRequest\x1a\x17.proto_test.AddressBook\"\x00\x42\x1fZ\x1dgithub.com/zjaco13/proto-testb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11\x61\x64\x64ressbook.proto\x12\nproto_test\"\"\n\x0e\x41\x64\x64ressRequest\x12\x10\n\x08\x61reaCode\x18\x01 \x01(\x05\"\xf3\x01\n\x06Person\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x03\x61ge\x18\x02 \x01(\x05H\x00\x88\x01\x01\x12\n\n\x02id\x18\x03 \x01(\x05\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12.\n\x06phones\x18\x05 \x03(\x0b\x32\x1e.proto_test.Person.PhoneNumber\x1aI\n\x0bPhoneNumber\x12\x0e\n\x06number\x18\x01 \x01(\t\x12*\n\x04type\x18\x02 \x01(\x0e\x32\x1c.proto_test.Person.PhoneType\"+\n\tPhoneType\x12\n\n\x06MOBILE\x10\x00\x12\x08\n\x04HOME\x10\x01\x12\x08\n\x04WORK\x10\x02\x42\x06\n\x04_age\"C\n\x0b\x41\x64\x64ressBook\x12\x10\n\x08\x61reaCode\x18\x01 \x01(\x05\x12\"\n\x06people\x18\x02 \x03(\x0b\x32\x12.proto_test.Person2S\n\x0c\x46\x65tchAddress\x12\x43\n\nGetAddress\x12\x1a.proto_test.AddressRequest\x1a\x17.proto_test.AddressBook\"\x00\x42*Z(github.com/zjaco13/proto-test/go/codegenb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -21,7 +21,7 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'addressbook_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'Z\035github.com/zjaco13/proto-test'
+  DESCRIPTOR._serialized_options = b'Z(github.com/zjaco13/proto-test/go/codegen'
   _globals['_ADDRESSREQUEST']._serialized_start=33
   _globals['_ADDRESSREQUEST']._serialized_end=67
   _globals['_PERSON']._serialized_start=70
