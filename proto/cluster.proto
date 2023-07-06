@@ -1,0 +1,17 @@
+syntax="proto3";
+package proto_test;
+
+option go_package = "github.com/zjaco13/proto-test/go/codegen";
+
+service ClusterService {
+    rpc SendCluster (EksBlueprint) returns (EksBlueprintResponse) {};
+}
+
+message EksBlueprint {
+    string id = 1;
+    optional string name = 2;
+}
+
+message EksBlueprintResponse {
+    string resp = 1;
+}

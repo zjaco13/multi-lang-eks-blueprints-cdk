@@ -5,7 +5,7 @@ set -e
 PROTO_FILES=$(find ./proto -name "*.proto")
 PROTO_DIR=proto
 GO_DIR=go/codegen
-TS_DIR=ts
+TS_DIR=ts/lib
 PY_DIR=python
 
 echo $PROTO_FILES
@@ -20,7 +20,7 @@ protoc \
 echo "Generating .ts files!"
 protoc \
 	--proto_path=$PROTO_DIR \
-	--ts_out=$TS_DIR --ts_opt=target=node \
+	--ts_out=$TS_DIR --ts_opt=target=node,outputServices=grpc-js \
 	$PROTO_FILES
 
 echo "Generating .py files"
