@@ -24,6 +24,5 @@ func main() {
 	client := codegen.NewClusterServiceClient(conn)
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	resp, err := client.SendCluster(ctx, build.Build())
-	log.Println(resp)
+	build.Build(client, ctx)
 }

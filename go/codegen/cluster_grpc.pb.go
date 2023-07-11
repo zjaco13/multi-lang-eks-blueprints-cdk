@@ -19,14 +19,22 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ClusterService_SendCluster_FullMethodName = "/proto_test.ClusterService/SendCluster"
+	ClusterService_CreateCluster_FullMethodName       = "/proto_test.ClusterService/CreateCluster"
+	ClusterService_AddTeams_FullMethodName            = "/proto_test.ClusterService/AddTeams"
+	ClusterService_AddClusterProvider_FullMethodName  = "/proto_test.ClusterService/AddClusterProvider"
+	ClusterService_AddResourceProvider_FullMethodName = "/proto_test.ClusterService/AddResourceProvider"
+	ClusterService_BuildCluster_FullMethodName        = "/proto_test.ClusterService/BuildCluster"
 )
 
 // ClusterServiceClient is the client API for ClusterService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ClusterServiceClient interface {
-	SendCluster(ctx context.Context, in *EksBlueprint, opts ...grpc.CallOption) (*EksBlueprintResponse, error)
+	CreateCluster(ctx context.Context, in *CreateClusterRequest, opts ...grpc.CallOption) (*APIResponse, error)
+	AddTeams(ctx context.Context, in *AddTeamsRequest, opts ...grpc.CallOption) (*APIResponse, error)
+	AddClusterProvider(ctx context.Context, in *AddClusterProviderRequest, opts ...grpc.CallOption) (*APIResponse, error)
+	AddResourceProvider(ctx context.Context, in *AddResourceProviderRequest, opts ...grpc.CallOption) (*APIResponse, error)
+	BuildCluster(ctx context.Context, in *BuildClusterRequest, opts ...grpc.CallOption) (*APIResponse, error)
 }
 
 type clusterServiceClient struct {
@@ -37,9 +45,45 @@ func NewClusterServiceClient(cc grpc.ClientConnInterface) ClusterServiceClient {
 	return &clusterServiceClient{cc}
 }
 
-func (c *clusterServiceClient) SendCluster(ctx context.Context, in *EksBlueprint, opts ...grpc.CallOption) (*EksBlueprintResponse, error) {
-	out := new(EksBlueprintResponse)
-	err := c.cc.Invoke(ctx, ClusterService_SendCluster_FullMethodName, in, out, opts...)
+func (c *clusterServiceClient) CreateCluster(ctx context.Context, in *CreateClusterRequest, opts ...grpc.CallOption) (*APIResponse, error) {
+	out := new(APIResponse)
+	err := c.cc.Invoke(ctx, ClusterService_CreateCluster_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *clusterServiceClient) AddTeams(ctx context.Context, in *AddTeamsRequest, opts ...grpc.CallOption) (*APIResponse, error) {
+	out := new(APIResponse)
+	err := c.cc.Invoke(ctx, ClusterService_AddTeams_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *clusterServiceClient) AddClusterProvider(ctx context.Context, in *AddClusterProviderRequest, opts ...grpc.CallOption) (*APIResponse, error) {
+	out := new(APIResponse)
+	err := c.cc.Invoke(ctx, ClusterService_AddClusterProvider_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *clusterServiceClient) AddResourceProvider(ctx context.Context, in *AddResourceProviderRequest, opts ...grpc.CallOption) (*APIResponse, error) {
+	out := new(APIResponse)
+	err := c.cc.Invoke(ctx, ClusterService_AddResourceProvider_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *clusterServiceClient) BuildCluster(ctx context.Context, in *BuildClusterRequest, opts ...grpc.CallOption) (*APIResponse, error) {
+	out := new(APIResponse)
+	err := c.cc.Invoke(ctx, ClusterService_BuildCluster_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +94,11 @@ func (c *clusterServiceClient) SendCluster(ctx context.Context, in *EksBlueprint
 // All implementations must embed UnimplementedClusterServiceServer
 // for forward compatibility
 type ClusterServiceServer interface {
-	SendCluster(context.Context, *EksBlueprint) (*EksBlueprintResponse, error)
+	CreateCluster(context.Context, *CreateClusterRequest) (*APIResponse, error)
+	AddTeams(context.Context, *AddTeamsRequest) (*APIResponse, error)
+	AddClusterProvider(context.Context, *AddClusterProviderRequest) (*APIResponse, error)
+	AddResourceProvider(context.Context, *AddResourceProviderRequest) (*APIResponse, error)
+	BuildCluster(context.Context, *BuildClusterRequest) (*APIResponse, error)
 	mustEmbedUnimplementedClusterServiceServer()
 }
 
@@ -58,8 +106,20 @@ type ClusterServiceServer interface {
 type UnimplementedClusterServiceServer struct {
 }
 
-func (UnimplementedClusterServiceServer) SendCluster(context.Context, *EksBlueprint) (*EksBlueprintResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SendCluster not implemented")
+func (UnimplementedClusterServiceServer) CreateCluster(context.Context, *CreateClusterRequest) (*APIResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCluster not implemented")
+}
+func (UnimplementedClusterServiceServer) AddTeams(context.Context, *AddTeamsRequest) (*APIResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddTeams not implemented")
+}
+func (UnimplementedClusterServiceServer) AddClusterProvider(context.Context, *AddClusterProviderRequest) (*APIResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddClusterProvider not implemented")
+}
+func (UnimplementedClusterServiceServer) AddResourceProvider(context.Context, *AddResourceProviderRequest) (*APIResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddResourceProvider not implemented")
+}
+func (UnimplementedClusterServiceServer) BuildCluster(context.Context, *BuildClusterRequest) (*APIResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BuildCluster not implemented")
 }
 func (UnimplementedClusterServiceServer) mustEmbedUnimplementedClusterServiceServer() {}
 
@@ -74,20 +134,92 @@ func RegisterClusterServiceServer(s grpc.ServiceRegistrar, srv ClusterServiceSer
 	s.RegisterService(&ClusterService_ServiceDesc, srv)
 }
 
-func _ClusterService_SendCluster_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EksBlueprint)
+func _ClusterService_CreateCluster_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateClusterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ClusterServiceServer).SendCluster(ctx, in)
+		return srv.(ClusterServiceServer).CreateCluster(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ClusterService_SendCluster_FullMethodName,
+		FullMethod: ClusterService_CreateCluster_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ClusterServiceServer).SendCluster(ctx, req.(*EksBlueprint))
+		return srv.(ClusterServiceServer).CreateCluster(ctx, req.(*CreateClusterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClusterService_AddTeams_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddTeamsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClusterServiceServer).AddTeams(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClusterService_AddTeams_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClusterServiceServer).AddTeams(ctx, req.(*AddTeamsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClusterService_AddClusterProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddClusterProviderRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClusterServiceServer).AddClusterProvider(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClusterService_AddClusterProvider_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClusterServiceServer).AddClusterProvider(ctx, req.(*AddClusterProviderRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClusterService_AddResourceProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddResourceProviderRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClusterServiceServer).AddResourceProvider(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClusterService_AddResourceProvider_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClusterServiceServer).AddResourceProvider(ctx, req.(*AddResourceProviderRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClusterService_BuildCluster_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BuildClusterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClusterServiceServer).BuildCluster(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClusterService_BuildCluster_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClusterServiceServer).BuildCluster(ctx, req.(*BuildClusterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -100,8 +232,24 @@ var ClusterService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ClusterServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SendCluster",
-			Handler:    _ClusterService_SendCluster_Handler,
+			MethodName: "CreateCluster",
+			Handler:    _ClusterService_CreateCluster_Handler,
+		},
+		{
+			MethodName: "AddTeams",
+			Handler:    _ClusterService_AddTeams_Handler,
+		},
+		{
+			MethodName: "AddClusterProvider",
+			Handler:    _ClusterService_AddClusterProvider_Handler,
+		},
+		{
+			MethodName: "AddResourceProvider",
+			Handler:    _ClusterService_AddResourceProvider_Handler,
+		},
+		{
+			MethodName: "BuildCluster",
+			Handler:    _ClusterService_BuildCluster_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -5,21 +5,45 @@ import * as cdk from "aws-cdk-lib"
 import UnimplementedClusterServiceService = proto_test.UnimplementedClusterServiceService
 
 const server = new Server();
+const app = new cdk.App();
+const builder = blueprints.EksBlueprint.builder();
 
 class ClusterServer extends UnimplementedClusterServiceService {
-    SendCluster(call: ServerUnaryCall<proto_test.EksBlueprint, proto_test.EksBlueprintResponse>, callback: sendUnaryData<proto_test.EksBlueprintResponse>): void {
-        const response = new proto_test.EksBlueprintResponse();
-        const app = new cdk.App();
-        const blueprint = blueprints.EksBlueprint.builder()
-            .account(process.env.CDK_DEFAULT_ACCOUNT!)
-            .region(process.env.CDK_DEFAULT_REGION!)
-            .build(app, call.request.id);
-        app.synth()
-        console.log(blueprint)
-        response.resp = `Created stack with id ${call.request.id}`
-        callback(null, response)
+    CreateCluster(call: ServerUnaryCall<proto_test.CreateClusterRequest, proto_test.APIResponse>, callback: sendUnaryData<proto_test.APIResponse>): void {
+        const response = new proto_test.APIResponse;
+        builder.id(call.request.id);
 
+        const name = call.request.has_name ? call.request.name : call.request.id;
+        builder.name(name);
+        response.message = `Cluster Created: ${name}`;
+        callback(null, response);
     }
+    AddTeams(call: ServerUnaryCall<proto_test.AddTeamsRequest, proto_test.APIResponse>, callback: sendUnaryData<proto_test.APIResponse>): void {
+        throw new Error("Method not implemented.");
+    }
+    AddClusterProvider(call: ServerUnaryCall<proto_test.AddClusterProviderRequest, proto_test.APIResponse>, callback: sendUnaryData<proto_test.APIResponse>): void {
+        throw new Error("Method not implemented.");
+    }
+    AddResourceProvider(call: ServerUnaryCall<proto_test.AddResourceProviderRequest, proto_test.APIResponse>, callback: sendUnaryData<proto_test.APIResponse>): void {
+        throw new Error("Method not implemented.");
+    }
+    BuildCluster(call: ServerUnaryCall<proto_test.BuildClusterRequest, proto_test.APIResponse>, callback: sendUnaryData<proto_test.APIResponse>): void {
+        const response = new proto_test.APIResponse;
+        const name = call.request.clusterName;
+        const account = call.request.has_account ? call.request.account : process.env.CDK_DEFAULT_ACCOUNT!;
+        const region = call.request.has_region ? call.request.region : process.env.CDK_DEFAULT_REGION!;
+
+        builder
+            .account(account)
+            .region(region)
+            .build(app, builder.props.id!);
+        app.synth()
+
+        response.message = `Cluster ${name} Built: ${account}:${region}`;
+
+        callback(null, response);
+    }
+
 }
 
 server.addService(UnimplementedClusterServiceService.definition, new ClusterServer())

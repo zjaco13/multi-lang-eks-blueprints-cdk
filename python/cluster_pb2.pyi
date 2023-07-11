@@ -4,7 +4,13 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
-class EksBlueprint(_message.Message):
+class APIResponse(_message.Message):
+    __slots__ = ["message"]
+    MESSAGE_FIELD_NUMBER: _ClassVar[int]
+    message: str
+    def __init__(self, message: _Optional[str] = ...) -> None: ...
+
+class CreateClusterRequest(_message.Message):
     __slots__ = ["id", "name"]
     ID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
@@ -12,8 +18,32 @@ class EksBlueprint(_message.Message):
     name: str
     def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ...) -> None: ...
 
-class EksBlueprintResponse(_message.Message):
-    __slots__ = ["resp"]
-    RESP_FIELD_NUMBER: _ClassVar[int]
-    resp: str
-    def __init__(self, resp: _Optional[str] = ...) -> None: ...
+class AddTeamsRequest(_message.Message):
+    __slots__ = ["clusterName", "teamName"]
+    CLUSTERNAME_FIELD_NUMBER: _ClassVar[int]
+    TEAMNAME_FIELD_NUMBER: _ClassVar[int]
+    clusterName: str
+    teamName: str
+    def __init__(self, clusterName: _Optional[str] = ..., teamName: _Optional[str] = ...) -> None: ...
+
+class AddClusterProviderRequest(_message.Message):
+    __slots__ = ["clusterName"]
+    CLUSTERNAME_FIELD_NUMBER: _ClassVar[int]
+    clusterName: str
+    def __init__(self, clusterName: _Optional[str] = ...) -> None: ...
+
+class AddResourceProviderRequest(_message.Message):
+    __slots__ = ["clusterName"]
+    CLUSTERNAME_FIELD_NUMBER: _ClassVar[int]
+    clusterName: str
+    def __init__(self, clusterName: _Optional[str] = ...) -> None: ...
+
+class BuildClusterRequest(_message.Message):
+    __slots__ = ["clusterName", "account", "region"]
+    CLUSTERNAME_FIELD_NUMBER: _ClassVar[int]
+    ACCOUNT_FIELD_NUMBER: _ClassVar[int]
+    REGION_FIELD_NUMBER: _ClassVar[int]
+    clusterName: str
+    account: str
+    region: str
+    def __init__(self, clusterName: _Optional[str] = ..., account: _Optional[str] = ..., region: _Optional[str] = ...) -> None: ...
