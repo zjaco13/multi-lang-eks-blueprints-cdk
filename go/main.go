@@ -6,7 +6,6 @@ import (
 	"log"
 	"time"
 
-	"github.com/zjaco13/proto-test/go/build"
 	"github.com/zjaco13/proto-test/go/codegen"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -14,7 +13,7 @@ import (
 
 var serverAddr = flag.String("addr", "localhost:50051", "Server address in format host:port")
 
-func main() {
+func RunBuild(build func(codegen.ClusterServiceClient, context.Context)) {
 	flag.Parse()
 	conn, err := grpc.Dial(*serverAddr, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	defer conn.Close()
@@ -24,5 +23,6 @@ func main() {
 	client := codegen.NewClusterServiceClient(conn)
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	build.Build(client, ctx)
+	build(client, ctx)
+
 }
