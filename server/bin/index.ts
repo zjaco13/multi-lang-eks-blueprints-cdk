@@ -33,7 +33,7 @@ class ClusterServer implements lib.proto.ClusterServiceServer {
             }
         });
 
-        response.message = 'Added teams to cluster';
+        response.message = 'Added teams to cluster: ' + teams.map(team => team.name).join(" ");
         builder.teams(...teams);
         callback(null, response);
     };
