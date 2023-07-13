@@ -7,6 +7,7 @@ PROTO_FILES=$(find $PROTO_DIR -type f -iname "*.proto" -exec basename {} \;)
 GO_DIR=sdks/go/proto
 TS_DIR=server/lib
 PY_DIR=sdks/python/proto
+RS_DIR=sdks/rust/src/proto
 
 echo $PROTO_FILES
 
@@ -29,4 +30,11 @@ python3 -m grpc_tools.protoc \
 	-I=$PROTO_DIR \
 	--python_out=$PY_DIR --pyi_out=$PY_DIR \
 	--grpc_python_out=$PY_DIR \
+	$PROTO_FILES
+
+echo "Generating .rs files"
+protoc \
+	-I=$PROTO_DIR \
+	--prost_out=$RS_DIR \
+	--tonic_out=$RS_DIR \
 	$PROTO_FILES

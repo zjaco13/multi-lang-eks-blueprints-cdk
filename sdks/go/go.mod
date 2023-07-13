@@ -1,4 +1,4 @@
-module github.com/zjaco13/proto-test/sdks/go-sdk
+module github.com/zjaco13/multi-lang-eks-blueprints-cdk/sdks/go-sdk
 
 go 1.20
 
