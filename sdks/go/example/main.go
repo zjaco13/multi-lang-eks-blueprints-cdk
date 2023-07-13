@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	builder "github.com/zjaco13/proto-test/go"
-	pb "github.com/zjaco13/proto-test/go/codegen"
+	builder "github.com/zjaco13/proto-test/sdks/go-sdk"
+	pb "github.com/zjaco13/proto-test/sdks/go-sdk/proto"
 )
 
 func main() {

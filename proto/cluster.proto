@@ -1,7 +1,7 @@
 syntax="proto3";
 package proto_test;
 
-option go_package = "github.com/zjaco13/proto-test/go/codegen";
+option go_package = "github.com/zjaco13/proto-test/sdks/go-sdk/proto";
 
 service ClusterService {
     rpc CreateCluster (CreateClusterRequest) returns (APIResponse);

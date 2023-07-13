@@ -4,7 +4,7 @@
 // - protoc             v4.23.3
 // source: cluster.proto
 
-package codegen
+package proto
 
 import (
 	context "context"

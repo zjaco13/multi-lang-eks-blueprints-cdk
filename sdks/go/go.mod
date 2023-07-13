@@ -1,4 +1,4 @@
-module github.com/zjaco13/proto-test/go
+module github.com/zjaco13/proto-test/sdks/go-sdk
 
 go 1.20
 

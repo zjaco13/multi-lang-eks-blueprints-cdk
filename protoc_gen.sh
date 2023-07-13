@@ -4,9 +4,9 @@ set -e
 
 PROTO_FILES=$(find ./proto -name "*.proto")
 PROTO_DIR=proto
-GO_DIR=go/codegen
-TS_DIR=ts/lib
-PY_DIR=python
+GO_DIR=sdks/go/proto
+TS_DIR=server/lib
+PY_DIR=sdks/python/proto
 
 echo $PROTO_FILES
 

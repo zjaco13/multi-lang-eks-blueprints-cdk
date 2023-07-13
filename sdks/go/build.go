@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	pb "github.com/zjaco13/proto-test/go/codegen"
+	pb "github.com/zjaco13/proto-test/sdks/go-sdk/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
