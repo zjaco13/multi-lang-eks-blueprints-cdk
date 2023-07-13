@@ -3,6 +3,7 @@
 import grpc
 
 import cluster_pb2 as cluster__pb2
+import team_pb2 as team__pb2
 
 
 class ClusterServiceStub(object):
@@ -15,27 +16,27 @@ class ClusterServiceStub(object):
             channel: A grpc.Channel.
         """
         self.CreateCluster = channel.unary_unary(
-                '/proto_test.ClusterService/CreateCluster',
+                '/proto.ClusterService/CreateCluster',
                 request_serializer=cluster__pb2.CreateClusterRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.AddTeams = channel.unary_unary(
-                '/proto_test.ClusterService/AddTeams',
-                request_serializer=cluster__pb2.AddTeamsRequest.SerializeToString,
+                '/proto.ClusterService/AddTeams',
+                request_serializer=team__pb2.AddTeamsRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.AddClusterProvider = channel.unary_unary(
-                '/proto_test.ClusterService/AddClusterProvider',
+                '/proto.ClusterService/AddClusterProvider',
                 request_serializer=cluster__pb2.AddClusterProviderRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.AddResourceProvider = channel.unary_unary(
-                '/proto_test.ClusterService/AddResourceProvider',
+                '/proto.ClusterService/AddResourceProvider',
                 request_serializer=cluster__pb2.AddResourceProviderRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.BuildCluster = channel.unary_unary(
-                '/proto_test.ClusterService/BuildCluster',
+                '/proto.ClusterService/BuildCluster',
                 request_serializer=cluster__pb2.BuildClusterRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
@@ -85,7 +86,7 @@ def add_ClusterServiceServicer_to_server(servicer, server):
             ),
             'AddTeams': grpc.unary_unary_rpc_method_handler(
                     servicer.AddTeams,
-                    request_deserializer=cluster__pb2.AddTeamsRequest.FromString,
+                    request_deserializer=team__pb2.AddTeamsRequest.FromString,
                     response_serializer=cluster__pb2.APIResponse.SerializeToString,
             ),
             'AddClusterProvider': grpc.unary_unary_rpc_method_handler(
@@ -105,7 +106,7 @@ def add_ClusterServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'proto_test.ClusterService', rpc_method_handlers)
+            'proto.ClusterService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -124,7 +125,7 @@ class ClusterService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/proto_test.ClusterService/CreateCluster',
+        return grpc.experimental.unary_unary(request, target, '/proto.ClusterService/CreateCluster',
             cluster__pb2.CreateClusterRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
@@ -141,8 +142,8 @@ class ClusterService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/proto_test.ClusterService/AddTeams',
-            cluster__pb2.AddTeamsRequest.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/proto.ClusterService/AddTeams',
+            team__pb2.AddTeamsRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -158,7 +159,7 @@ class ClusterService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/proto_test.ClusterService/AddClusterProvider',
+        return grpc.experimental.unary_unary(request, target, '/proto.ClusterService/AddClusterProvider',
             cluster__pb2.AddClusterProviderRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
@@ -175,7 +176,7 @@ class ClusterService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/proto_test.ClusterService/AddResourceProvider',
+        return grpc.experimental.unary_unary(request, target, '/proto.ClusterService/AddResourceProvider',
             cluster__pb2.AddResourceProviderRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
@@ -192,7 +193,7 @@ class ClusterService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/proto_test.ClusterService/BuildCluster',
+        return grpc.experimental.unary_unary(request, target, '/proto.ClusterService/BuildCluster',
             cluster__pb2.BuildClusterRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,

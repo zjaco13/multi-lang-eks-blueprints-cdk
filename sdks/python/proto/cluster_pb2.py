@@ -11,9 +11,10 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
+import team_pb2 as team__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rcluster.proto\x12\nproto_test\"\x1e\n\x0b\x41PIResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\">\n\x14\x43reateClusterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\x04name\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x07\n\x05_name\"8\n\x0f\x41\x64\x64TeamsRequest\x12\x13\n\x0b\x63lusterName\x18\x01 \x01(\t\x12\x10\n\x08teamName\x18\x02 \x01(\t\"0\n\x19\x41\x64\x64\x43lusterProviderRequest\x12\x13\n\x0b\x63lusterName\x18\x01 \x01(\t\"1\n\x1a\x41\x64\x64ResourceProviderRequest\x12\x13\n\x0b\x63lusterName\x18\x01 \x01(\t\"l\n\x13\x42uildClusterRequest\x12\x13\n\x0b\x63lusterName\x18\x01 \x01(\t\x12\x14\n\x07\x61\x63\x63ount\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x06region\x18\x03 \x01(\tH\x01\x88\x01\x01\x42\n\n\x08_accountB\t\n\x07_region2\x96\x03\n\x0e\x43lusterService\x12J\n\rCreateCluster\x12 .proto_test.CreateClusterRequest\x1a\x17.proto_test.APIResponse\x12@\n\x08\x41\x64\x64Teams\x12\x1b.proto_test.AddTeamsRequest\x1a\x17.proto_test.APIResponse\x12T\n\x12\x41\x64\x64\x43lusterProvider\x12%.proto_test.AddClusterProviderRequest\x1a\x17.proto_test.APIResponse\x12V\n\x13\x41\x64\x64ResourceProvider\x12&.proto_test.AddResourceProviderRequest\x1a\x17.proto_test.APIResponse\x12H\n\x0c\x42uildCluster\x12\x1f.proto_test.BuildClusterRequest\x1a\x17.proto_test.APIResponseB1Z/github.com/zjaco13/proto-test/sdks/go-sdk/protob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rcluster.proto\x12\x05proto\x1a\nteam.proto\"\x1e\n\x0b\x41PIResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\">\n\x14\x43reateClusterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\x04name\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x07\n\x05_name\"0\n\x19\x41\x64\x64\x43lusterProviderRequest\x12\x13\n\x0b\x63lusterName\x18\x01 \x01(\t\"1\n\x1a\x41\x64\x64ResourceProviderRequest\x12\x13\n\x0b\x63lusterName\x18\x01 \x01(\t\"l\n\x13\x42uildClusterRequest\x12\x13\n\x0b\x63lusterName\x18\x01 \x01(\t\x12\x14\n\x07\x61\x63\x63ount\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x06region\x18\x03 \x01(\tH\x01\x88\x01\x01\x42\n\n\x08_accountB\t\n\x07_region2\xe4\x02\n\x0e\x43lusterService\x12@\n\rCreateCluster\x12\x1b.proto.CreateClusterRequest\x1a\x12.proto.APIResponse\x12\x36\n\x08\x41\x64\x64Teams\x12\x16.proto.AddTeamsRequest\x1a\x12.proto.APIResponse\x12J\n\x12\x41\x64\x64\x43lusterProvider\x12 .proto.AddClusterProviderRequest\x1a\x12.proto.APIResponse\x12L\n\x13\x41\x64\x64ResourceProvider\x12!.proto.AddResourceProviderRequest\x1a\x12.proto.APIResponse\x12>\n\x0c\x42uildCluster\x12\x1a.proto.BuildClusterRequest\x1a\x12.proto.APIResponseB1Z/github.com/zjaco13/proto-test/sdks/go-sdk/protob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -22,18 +23,16 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'Z/github.com/zjaco13/proto-test/sdks/go-sdk/proto'
-  _globals['_APIRESPONSE']._serialized_start=29
-  _globals['_APIRESPONSE']._serialized_end=59
-  _globals['_CREATECLUSTERREQUEST']._serialized_start=61
-  _globals['_CREATECLUSTERREQUEST']._serialized_end=123
-  _globals['_ADDTEAMSREQUEST']._serialized_start=125
-  _globals['_ADDTEAMSREQUEST']._serialized_end=181
-  _globals['_ADDCLUSTERPROVIDERREQUEST']._serialized_start=183
-  _globals['_ADDCLUSTERPROVIDERREQUEST']._serialized_end=231
-  _globals['_ADDRESOURCEPROVIDERREQUEST']._serialized_start=233
-  _globals['_ADDRESOURCEPROVIDERREQUEST']._serialized_end=282
-  _globals['_BUILDCLUSTERREQUEST']._serialized_start=284
-  _globals['_BUILDCLUSTERREQUEST']._serialized_end=392
-  _globals['_CLUSTERSERVICE']._serialized_start=395
-  _globals['_CLUSTERSERVICE']._serialized_end=801
+  _globals['_APIRESPONSE']._serialized_start=36
+  _globals['_APIRESPONSE']._serialized_end=66
+  _globals['_CREATECLUSTERREQUEST']._serialized_start=68
+  _globals['_CREATECLUSTERREQUEST']._serialized_end=130
+  _globals['_ADDCLUSTERPROVIDERREQUEST']._serialized_start=132
+  _globals['_ADDCLUSTERPROVIDERREQUEST']._serialized_end=180
+  _globals['_ADDRESOURCEPROVIDERREQUEST']._serialized_start=182
+  _globals['_ADDRESOURCEPROVIDERREQUEST']._serialized_end=231
+  _globals['_BUILDCLUSTERREQUEST']._serialized_start=233
+  _globals['_BUILDCLUSTERREQUEST']._serialized_end=341
+  _globals['_CLUSTERSERVICE']._serialized_start=344
+  _globals['_CLUSTERSERVICE']._serialized_end=700
 # @@protoc_insertion_point(module_scope)

@@ -1,3 +1,4 @@
+import team_pb2 as _team_pb2
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from typing import ClassVar as _ClassVar, Optional as _Optional
@@ -17,14 +18,6 @@ class CreateClusterRequest(_message.Message):
     id: str
     name: str
     def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ...) -> None: ...
-
-class AddTeamsRequest(_message.Message):
-    __slots__ = ["clusterName", "teamName"]
-    CLUSTERNAME_FIELD_NUMBER: _ClassVar[int]
-    TEAMNAME_FIELD_NUMBER: _ClassVar[int]
-    clusterName: str
-    teamName: str
-    def __init__(self, clusterName: _Optional[str] = ..., teamName: _Optional[str] = ...) -> None: ...
 
 class AddClusterProviderRequest(_message.Message):
     __slots__ = ["clusterName"]

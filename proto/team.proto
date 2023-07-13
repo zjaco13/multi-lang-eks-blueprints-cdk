@@ -1,0 +1,27 @@
+syntax="proto3";
+package proto;
+option go_package = "github.com/zjaco13/proto-test/sdks/go-sdk/proto";
+
+message AddTeamsRequest {
+    repeated Team teams = 1;
+}
+
+message Team {
+    oneof team {
+        GenericTeam generic_team = 1;
+        PlatformTeam platform_team = 2;
+        ApplicationTeam application_team = 3;
+    };
+}
+
+message GenericTeam {
+    string name = 1;
+}
+
+message PlatformTeam {
+    string name = 1;
+}
+
+message ApplicationTeam {
+    string name = 1;
+}

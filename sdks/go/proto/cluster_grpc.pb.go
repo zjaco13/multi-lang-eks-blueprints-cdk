@@ -19,11 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ClusterService_CreateCluster_FullMethodName       = "/proto_test.ClusterService/CreateCluster"
-	ClusterService_AddTeams_FullMethodName            = "/proto_test.ClusterService/AddTeams"
-	ClusterService_AddClusterProvider_FullMethodName  = "/proto_test.ClusterService/AddClusterProvider"
-	ClusterService_AddResourceProvider_FullMethodName = "/proto_test.ClusterService/AddResourceProvider"
-	ClusterService_BuildCluster_FullMethodName        = "/proto_test.ClusterService/BuildCluster"
+	ClusterService_CreateCluster_FullMethodName       = "/proto.ClusterService/CreateCluster"
+	ClusterService_AddTeams_FullMethodName            = "/proto.ClusterService/AddTeams"
+	ClusterService_AddClusterProvider_FullMethodName  = "/proto.ClusterService/AddClusterProvider"
+	ClusterService_AddResourceProvider_FullMethodName = "/proto.ClusterService/AddResourceProvider"
+	ClusterService_BuildCluster_FullMethodName        = "/proto.ClusterService/BuildCluster"
 )
 
 // ClusterServiceClient is the client API for ClusterService service.
@@ -228,7 +228,7 @@ func _ClusterService_BuildCluster_Handler(srv interface{}, ctx context.Context, 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ClusterService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "proto_test.ClusterService",
+	ServiceName: "proto.ClusterService",
 	HandlerType: (*ClusterServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

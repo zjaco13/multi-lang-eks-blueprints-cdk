@@ -19,8 +19,9 @@
   "dependencies": {
     "@aws-quickstart/eks-blueprints": "^1.10.0",
     "@grpc/grpc-js": "^1.8.16",
+    "aws-cdk": "2.83.1",
     "google-protobuf": "^3.21.2",
-    "aws-cdk": "2.83.1"
+    "ts-proto": "^1.153.2"
   },
   "devDependencies": {
     "@types/google-protobuf": "^3.15.6"

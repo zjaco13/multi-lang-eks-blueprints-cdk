@@ -1,3 +1,3 @@
-# proto-test
+# multi-lang-eks-blueprints-cdk
 
-testing protobuf and code generation
+Multi-Language framework using protobuf and gRPC for EKS Blueprints for CDK

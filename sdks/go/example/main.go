@@ -14,6 +14,10 @@ func main() {
 
 func build(client pb.ClusterServiceClient, ctx context.Context) {
 	fmt.Println(client.CreateCluster(ctx, &pb.CreateClusterRequest{Id: "testy"}))
+	teams := []*pb.Team{}
+	teams = append(teams, &pb.Team{Team: &pb.Team_ApplicationTeam{ApplicationTeam: &pb.ApplicationTeam{Name: "team1"}}})
+	fmt.Println(client.AddTeams(ctx, &pb.AddTeamsRequest{
+		Teams: teams,
+	}))
 	fmt.Println(client.BuildCluster(ctx, &pb.BuildClusterRequest{ClusterName: "testy"}))
-
 }
