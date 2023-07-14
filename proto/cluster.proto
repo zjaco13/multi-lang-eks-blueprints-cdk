@@ -1,6 +1,9 @@
 syntax="proto3";
 package proto;
 import "team.proto";
+import "cluster_provider.proto";
+import "resource_provider.proto";
+import "addons.proto"
 
 option go_package = "github.com/zjaco13/proto-test/sdks/go-sdk/proto";
 
@@ -9,6 +12,7 @@ service ClusterService {
     rpc AddTeams (AddTeamsRequest) returns (APIResponse);
     rpc AddClusterProvider (AddClusterProviderRequest) returns (APIResponse);
     rpc AddResourceProvider (AddResourceProviderRequest) returns (APIResponse);
+    rpc AddAddons (AddAddonsRequest) returns (APIResponse);
     rpc BuildCluster (BuildClusterRequest) returns (APIResponse);
     //rpc SendCluster (EksBlueprint) returns (EksBlueprintResponse);
 }
@@ -17,59 +21,14 @@ message APIResponse{
     string message = 1;
 }
 
-
 message CreateClusterRequest {
     string id = 1;
     optional string name = 2;
 }
 
 
-message AddClusterProviderRequest {
-   string clusterName = 1;
-}
-
-message AddResourceProviderRequest {
-    string clusterName = 1;
-}
-
 message BuildClusterRequest {
     string clusterName = 1;
     optional string account = 2;
     optional string region = 3;
 }
-
-//message EksBlueprint {
-//    string id = 1;
-//    optional string name = 2;
-//    repeated ClusterAddOn addOns = 3;
-//    repeated Team teams = 4;
-//    optional ClusterProvider clusterProvider = 5;
-//    optional string version = 6;
-//    optional map<string, ResourceProvider> resourceProviders = 7;
-//}
-//
-//message ClusterAddOn {
-//
-//}
-//
-//message Team {
-//    string name = 1;
-//    enum Type {
-//        PLATFORM = 0;
-//        APPLICATION = 1;
-//    }
-//
-//    optional Type type = 2 [default = APPLICATION];
-//}
-//
-//message ClusterProvider {
-//
-//}
-//
-//message ResourceProvider {
-//
-//}
-//
-//message EksBlueprintResponse {
-//    string resp = 1;
-//}

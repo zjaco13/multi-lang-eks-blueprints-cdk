@@ -1,0 +1,24 @@
+syntax="proto3";
+package proto;
+
+option go_package = "github.com/zjaco13/proto-test/sdks/go-sdk/proto";
+
+message AddClusterProviderRequest {
+
+}
+
+message ClusterProvider {
+    oneof cluster_provider {
+        AsgClusterProvider asg_cluster_provider = 1;
+        MngClusterProvider mng_cluster_provider = 2;
+    };
+}
+
+message AsgClusterProvider {
+    optional string name = 1;
+}
+
+message MngClusterProvider {
+    optional string name = 1; 
+}
+

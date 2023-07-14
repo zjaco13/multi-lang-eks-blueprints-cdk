@@ -1,0 +1,18 @@
+syntax="proto3";
+package proto;
+
+option go_package = "github.com/zjaco13/proto-test/sdks/go-sdk/proto";
+
+message AddAddonsRequest {
+    repeated Addon addons = 1;
+}
+
+message Addon {
+    oneof addon {
+        AckAddOn ack_add_on = 1;
+    }
+}
+
+message AckAddOn{
+    optional string id = 1;
+}
