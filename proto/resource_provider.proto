@@ -4,16 +4,17 @@ option go_package = "github.com/zjaco13/proto-test/sdks/go-sdk/proto";
 
 message AddResourceProviderRequest {
     string name = 1;
-    ResourceProvider resource_providers = 2;
+    ResourceProvider resource_provider = 2;
 }
 
 message ResourceProvider {
     oneof resource_provider {
-        
+        VpcProvider vpc_provider = 1;
     };
 
 }
 
-message VpcResourceProvider{
+message VpcProvider{
+    optional string vpcId = 1;
 
 }

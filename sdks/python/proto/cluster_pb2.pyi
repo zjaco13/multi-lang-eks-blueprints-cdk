@@ -1,4 +1,7 @@
 import team_pb2 as _team_pb2
+import cluster_provider_pb2 as _cluster_provider_pb2
+import resource_provider_pb2 as _resource_provider_pb2
+import addons_pb2 as _addons_pb2
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from typing import ClassVar as _ClassVar, Optional as _Optional
@@ -18,18 +21,6 @@ class CreateClusterRequest(_message.Message):
     id: str
     name: str
     def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ...) -> None: ...
-
-class AddClusterProviderRequest(_message.Message):
-    __slots__ = ["clusterName"]
-    CLUSTERNAME_FIELD_NUMBER: _ClassVar[int]
-    clusterName: str
-    def __init__(self, clusterName: _Optional[str] = ...) -> None: ...
-
-class AddResourceProviderRequest(_message.Message):
-    __slots__ = ["clusterName"]
-    CLUSTERNAME_FIELD_NUMBER: _ClassVar[int]
-    clusterName: str
-    def __init__(self, clusterName: _Optional[str] = ...) -> None: ...
 
 class BuildClusterRequest(_message.Message):
     __slots__ = ["clusterName", "account", "region"]

@@ -10,9 +10,10 @@ message AddAddonsRequest {
 message Addon {
     oneof addon {
         AckAddOn ack_add_on = 1;
-    }
+    };
 }
 
 message AckAddOn{
     optional string id = 1;
+    string serviceName = 2;
 }

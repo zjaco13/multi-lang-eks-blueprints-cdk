@@ -12,6 +12,9 @@ import {
   UntypedServiceImplementation,
 } from "@grpc/grpc-js";
 import * as _m0 from "protobufjs/minimal";
+import { AddAddonsRequest } from "./addons";
+import { AddClusterProviderRequest } from "./cluster_provider";
+import { AddResourceProviderRequest } from "./resource_provider";
 import { AddTeamsRequest } from "./team";
 
 export interface APIResponse {
@@ -21,14 +24,6 @@ export interface APIResponse {
 export interface CreateClusterRequest {
   id: string;
   name?: string | undefined;
-}
-
-export interface AddClusterProviderRequest {
-  clusterName: string;
-}
-
-export interface AddResourceProviderRequest {
-  clusterName: string;
 }
 
 export interface BuildClusterRequest {
@@ -164,118 +159,6 @@ export const CreateClusterRequest = {
   },
 };
 
-function createBaseAddClusterProviderRequest(): AddClusterProviderRequest {
-  return { clusterName: "" };
-}
-
-export const AddClusterProviderRequest = {
-  encode(message: AddClusterProviderRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.clusterName !== "") {
-      writer.uint32(10).string(message.clusterName);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): AddClusterProviderRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseAddClusterProviderRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.clusterName = reader.string();
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): AddClusterProviderRequest {
-    return { clusterName: isSet(object.clusterName) ? String(object.clusterName) : "" };
-  },
-
-  toJSON(message: AddClusterProviderRequest): unknown {
-    const obj: any = {};
-    message.clusterName !== undefined && (obj.clusterName = message.clusterName);
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<AddClusterProviderRequest>, I>>(base?: I): AddClusterProviderRequest {
-    return AddClusterProviderRequest.fromPartial(base ?? {});
-  },
-
-  fromPartial<I extends Exact<DeepPartial<AddClusterProviderRequest>, I>>(object: I): AddClusterProviderRequest {
-    const message = createBaseAddClusterProviderRequest();
-    message.clusterName = object.clusterName ?? "";
-    return message;
-  },
-};
-
-function createBaseAddResourceProviderRequest(): AddResourceProviderRequest {
-  return { clusterName: "" };
-}
-
-export const AddResourceProviderRequest = {
-  encode(message: AddResourceProviderRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.clusterName !== "") {
-      writer.uint32(10).string(message.clusterName);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): AddResourceProviderRequest {
-    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseAddResourceProviderRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          if (tag !== 10) {
-            break;
-          }
-
-          message.clusterName = reader.string();
-          continue;
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skipType(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): AddResourceProviderRequest {
-    return { clusterName: isSet(object.clusterName) ? String(object.clusterName) : "" };
-  },
-
-  toJSON(message: AddResourceProviderRequest): unknown {
-    const obj: any = {};
-    message.clusterName !== undefined && (obj.clusterName = message.clusterName);
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<AddResourceProviderRequest>, I>>(base?: I): AddResourceProviderRequest {
-    return AddResourceProviderRequest.fromPartial(base ?? {});
-  },
-
-  fromPartial<I extends Exact<DeepPartial<AddResourceProviderRequest>, I>>(object: I): AddResourceProviderRequest {
-    const message = createBaseAddResourceProviderRequest();
-    message.clusterName = object.clusterName ?? "";
-    return message;
-  },
-};
-
 function createBaseBuildClusterRequest(): BuildClusterRequest {
   return { clusterName: "", account: undefined, region: undefined };
 }
@@ -400,6 +283,15 @@ export const ClusterServiceService = {
     responseSerialize: (value: APIResponse) => Buffer.from(APIResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => APIResponse.decode(value),
   },
+  addAddons: {
+    path: "/proto.ClusterService/AddAddons",
+    requestStream: false,
+    responseStream: false,
+    requestSerialize: (value: AddAddonsRequest) => Buffer.from(AddAddonsRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => AddAddonsRequest.decode(value),
+    responseSerialize: (value: APIResponse) => Buffer.from(APIResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => APIResponse.decode(value),
+  },
   /** rpc SendCluster (EksBlueprint) returns (EksBlueprintResponse); */
   buildCluster: {
     path: "/proto.ClusterService/BuildCluster",
@@ -417,6 +309,7 @@ export interface ClusterServiceServer extends UntypedServiceImplementation {
   addTeams: handleUnaryCall<AddTeamsRequest, APIResponse>;
   addClusterProvider: handleUnaryCall<AddClusterProviderRequest, APIResponse>;
   addResourceProvider: handleUnaryCall<AddResourceProviderRequest, APIResponse>;
+  addAddons: handleUnaryCall<AddAddonsRequest, APIResponse>;
   /** rpc SendCluster (EksBlueprint) returns (EksBlueprintResponse); */
   buildCluster: handleUnaryCall<BuildClusterRequest, APIResponse>;
 }
@@ -478,6 +371,21 @@ export interface ClusterServiceClient extends Client {
   ): ClientUnaryCall;
   addResourceProvider(
     request: AddResourceProviderRequest,
+    metadata: Metadata,
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: APIResponse) => void,
+  ): ClientUnaryCall;
+  addAddons(
+    request: AddAddonsRequest,
+    callback: (error: ServiceError | null, response: APIResponse) => void,
+  ): ClientUnaryCall;
+  addAddons(
+    request: AddAddonsRequest,
+    metadata: Metadata,
+    callback: (error: ServiceError | null, response: APIResponse) => void,
+  ): ClientUnaryCall;
+  addAddons(
+    request: AddAddonsRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
     callback: (error: ServiceError | null, response: APIResponse) => void,

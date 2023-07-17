@@ -3,7 +3,7 @@ package proto;
 import "team.proto";
 import "cluster_provider.proto";
 import "resource_provider.proto";
-import "addons.proto"
+import "addons.proto";
 
 option go_package = "github.com/zjaco13/proto-test/sdks/go-sdk/proto";
 

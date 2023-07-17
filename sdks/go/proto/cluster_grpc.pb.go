@@ -23,6 +23,7 @@ const (
 	ClusterService_AddTeams_FullMethodName            = "/proto.ClusterService/AddTeams"
 	ClusterService_AddClusterProvider_FullMethodName  = "/proto.ClusterService/AddClusterProvider"
 	ClusterService_AddResourceProvider_FullMethodName = "/proto.ClusterService/AddResourceProvider"
+	ClusterService_AddAddons_FullMethodName           = "/proto.ClusterService/AddAddons"
 	ClusterService_BuildCluster_FullMethodName        = "/proto.ClusterService/BuildCluster"
 )
 
@@ -34,6 +35,7 @@ type ClusterServiceClient interface {
 	AddTeams(ctx context.Context, in *AddTeamsRequest, opts ...grpc.CallOption) (*APIResponse, error)
 	AddClusterProvider(ctx context.Context, in *AddClusterProviderRequest, opts ...grpc.CallOption) (*APIResponse, error)
 	AddResourceProvider(ctx context.Context, in *AddResourceProviderRequest, opts ...grpc.CallOption) (*APIResponse, error)
+	AddAddons(ctx context.Context, in *AddAddonsRequest, opts ...grpc.CallOption) (*APIResponse, error)
 	BuildCluster(ctx context.Context, in *BuildClusterRequest, opts ...grpc.CallOption) (*APIResponse, error)
 }
 
@@ -81,6 +83,15 @@ func (c *clusterServiceClient) AddResourceProvider(ctx context.Context, in *AddR
 	return out, nil
 }
 
+func (c *clusterServiceClient) AddAddons(ctx context.Context, in *AddAddonsRequest, opts ...grpc.CallOption) (*APIResponse, error) {
+	out := new(APIResponse)
+	err := c.cc.Invoke(ctx, ClusterService_AddAddons_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *clusterServiceClient) BuildCluster(ctx context.Context, in *BuildClusterRequest, opts ...grpc.CallOption) (*APIResponse, error) {
 	out := new(APIResponse)
 	err := c.cc.Invoke(ctx, ClusterService_BuildCluster_FullMethodName, in, out, opts...)
@@ -98,6 +109,7 @@ type ClusterServiceServer interface {
 	AddTeams(context.Context, *AddTeamsRequest) (*APIResponse, error)
 	AddClusterProvider(context.Context, *AddClusterProviderRequest) (*APIResponse, error)
 	AddResourceProvider(context.Context, *AddResourceProviderRequest) (*APIResponse, error)
+	AddAddons(context.Context, *AddAddonsRequest) (*APIResponse, error)
 	BuildCluster(context.Context, *BuildClusterRequest) (*APIResponse, error)
 	mustEmbedUnimplementedClusterServiceServer()
 }
@@ -117,6 +129,9 @@ func (UnimplementedClusterServiceServer) AddClusterProvider(context.Context, *Ad
 }
 func (UnimplementedClusterServiceServer) AddResourceProvider(context.Context, *AddResourceProviderRequest) (*APIResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddResourceProvider not implemented")
+}
+func (UnimplementedClusterServiceServer) AddAddons(context.Context, *AddAddonsRequest) (*APIResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddAddons not implemented")
 }
 func (UnimplementedClusterServiceServer) BuildCluster(context.Context, *BuildClusterRequest) (*APIResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BuildCluster not implemented")
@@ -206,6 +221,24 @@ func _ClusterService_AddResourceProvider_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ClusterService_AddAddons_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddAddonsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClusterServiceServer).AddAddons(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClusterService_AddAddons_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClusterServiceServer).AddAddons(ctx, req.(*AddAddonsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ClusterService_BuildCluster_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BuildClusterRequest)
 	if err := dec(in); err != nil {
@@ -246,6 +279,10 @@ var ClusterService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddResourceProvider",
 			Handler:    _ClusterService_AddResourceProvider_Handler,
+		},
+		{
+			MethodName: "AddAddons",
+			Handler:    _ClusterService_AddAddons_Handler,
 		},
 		{
 			MethodName: "BuildCluster",

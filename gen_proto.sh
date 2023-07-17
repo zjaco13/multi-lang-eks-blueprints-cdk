@@ -32,9 +32,9 @@ python3 -m grpc_tools.protoc \
 	--grpc_python_out=$PY_DIR \
 	$PROTO_FILES
 
-echo "Generating .rs files"
-protoc \
-	-I=$PROTO_DIR \
-	--prost_out=$RS_DIR \
-	--tonic_out=$RS_DIR \
-	$PROTO_FILES
+# echo "Generating .rs files"
+# protoc \
+# 	-I=$PROTO_DIR \
+# 	--prost_out=$RS_DIR \
+# 	--tonic_out=$RS_DIR \
+# 	$PROTO_FILES

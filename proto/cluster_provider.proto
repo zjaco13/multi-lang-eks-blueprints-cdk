@@ -4,6 +4,7 @@ package proto;
 option go_package = "github.com/zjaco13/proto-test/sdks/go-sdk/proto";
 
 message AddClusterProviderRequest {
+    ClusterProvider cluster_provider = 1;
 
 }
 
@@ -16,9 +17,12 @@ message ClusterProvider {
 
 message AsgClusterProvider {
     optional string name = 1;
+    string version = 2;
+    string id = 3;
 }
 
 message MngClusterProvider {
     optional string name = 1; 
+    string version = 2;
 }
 

@@ -2,7 +2,10 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
+import addons_pb2 as addons__pb2
 import cluster_pb2 as cluster__pb2
+import cluster_provider_pb2 as cluster__provider__pb2
+import resource_provider_pb2 as resource__provider__pb2
 import team_pb2 as team__pb2
 
 
@@ -27,12 +30,17 @@ class ClusterServiceStub(object):
                 )
         self.AddClusterProvider = channel.unary_unary(
                 '/proto.ClusterService/AddClusterProvider',
-                request_serializer=cluster__pb2.AddClusterProviderRequest.SerializeToString,
+                request_serializer=cluster__provider__pb2.AddClusterProviderRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.AddResourceProvider = channel.unary_unary(
                 '/proto.ClusterService/AddResourceProvider',
-                request_serializer=cluster__pb2.AddResourceProviderRequest.SerializeToString,
+                request_serializer=resource__provider__pb2.AddResourceProviderRequest.SerializeToString,
+                response_deserializer=cluster__pb2.APIResponse.FromString,
+                )
+        self.AddAddons = channel.unary_unary(
+                '/proto.ClusterService/AddAddons',
+                request_serializer=addons__pb2.AddAddonsRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.BuildCluster = channel.unary_unary(
@@ -69,6 +77,12 @@ class ClusterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def AddAddons(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def BuildCluster(self, request, context):
         """rpc SendCluster (EksBlueprint) returns (EksBlueprintResponse);
         """
@@ -91,12 +105,17 @@ def add_ClusterServiceServicer_to_server(servicer, server):
             ),
             'AddClusterProvider': grpc.unary_unary_rpc_method_handler(
                     servicer.AddClusterProvider,
-                    request_deserializer=cluster__pb2.AddClusterProviderRequest.FromString,
+                    request_deserializer=cluster__provider__pb2.AddClusterProviderRequest.FromString,
                     response_serializer=cluster__pb2.APIResponse.SerializeToString,
             ),
             'AddResourceProvider': grpc.unary_unary_rpc_method_handler(
                     servicer.AddResourceProvider,
-                    request_deserializer=cluster__pb2.AddResourceProviderRequest.FromString,
+                    request_deserializer=resource__provider__pb2.AddResourceProviderRequest.FromString,
+                    response_serializer=cluster__pb2.APIResponse.SerializeToString,
+            ),
+            'AddAddons': grpc.unary_unary_rpc_method_handler(
+                    servicer.AddAddons,
+                    request_deserializer=addons__pb2.AddAddonsRequest.FromString,
                     response_serializer=cluster__pb2.APIResponse.SerializeToString,
             ),
             'BuildCluster': grpc.unary_unary_rpc_method_handler(
@@ -160,7 +179,7 @@ class ClusterService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/proto.ClusterService/AddClusterProvider',
-            cluster__pb2.AddClusterProviderRequest.SerializeToString,
+            cluster__provider__pb2.AddClusterProviderRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -177,7 +196,24 @@ class ClusterService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/proto.ClusterService/AddResourceProvider',
-            cluster__pb2.AddResourceProviderRequest.SerializeToString,
+            resource__provider__pb2.AddResourceProviderRequest.SerializeToString,
+            cluster__pb2.APIResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def AddAddons(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/proto.ClusterService/AddAddons',
+            addons__pb2.AddAddonsRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
