@@ -14,10 +14,10 @@ tokio = { version = "1.0", features = ["rt-multi-thread", "macros", "sync", "tim
 tokio-stream = "0.1"
 
 async-stream = "0.2"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
-rand = "0.7"
 
 [build-dependencies]
 tonic-build = "0.9"
-glob = "0.3.1"
+
+[[example]]
+name = "client-example"
+path = "examples/main.rs"

@@ -1,4 +1,4 @@
-import { Server, ServerUnaryCall, sendUnaryData, ServerCredentials, handleUnaryCall } from "@grpc/grpc-js";
+import { Server, ServerCredentials, handleUnaryCall } from "@grpc/grpc-js";
 import * as lib from '../lib';
 import * as blueprints from "@aws-quickstart/eks-blueprints";
 import * as cdk from "aws-cdk-lib";
@@ -25,7 +25,7 @@ class ClusterServer implements lib.proto.ClusterServiceServer {
         call.request.addons.forEach(addon => {
             if(addon.ackAddOn) {
                 addons.push(new blueprints.addons.AckAddOn({
-                ...addon.ackAddOn, 
+                    ...addon.ackAddOn,
                     serviceName: addon.ackAddOn.serviceName as blueprints.AckServiceName
                 }));
             }
