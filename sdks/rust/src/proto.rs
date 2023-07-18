@@ -120,7 +120,7 @@ pub struct AddAddonsRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Addon {
-    #[prost(oneof = "addon::Addon", tags = "1")]
+    #[prost(oneof = "addon::Addon", tags = "1, 2")]
     pub addon: ::core::option::Option<addon::Addon>,
 }
 /// Nested message and enum types in `Addon`.
@@ -130,6 +130,8 @@ pub mod addon {
     pub enum Addon {
         #[prost(message, tag = "1")]
         AckAddOn(super::AckAddOn),
+        #[prost(message, tag = "2")]
+        KubeProxyAddOn(super::KubeProxyAddOn),
     }
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -139,6 +141,12 @@ pub struct AckAddOn {
     pub id: ::core::option::Option<::prost::alloc::string::String>,
     #[prost(string, tag = "2")]
     pub service_name: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct KubeProxyAddOn {
+    #[prost(string, optional, tag = "1")]
+    pub version: ::core::option::Option<::prost::alloc::string::String>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

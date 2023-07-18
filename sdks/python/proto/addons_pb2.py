@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0c\x61\x64\x64ons.proto\x12\x05proto\"0\n\x10\x41\x64\x64\x41\x64\x64onsRequest\x12\x1c\n\x06\x61\x64\x64ons\x18\x01 \x03(\x0b\x32\x0c.proto.Addon\"7\n\x05\x41\x64\x64on\x12%\n\nack_add_on\x18\x01 \x01(\x0b\x32\x0f.proto.AckAddOnH\x00\x42\x07\n\x05\x61\x64\x64on\"7\n\x08\x41\x63kAddOn\x12\x0f\n\x02id\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x0bserviceName\x18\x02 \x01(\tB\x05\n\x03_idB1Z/github.com/zjaco13/proto-test/sdks/go-sdk/protob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0c\x61\x64\x64ons.proto\x12\x05proto\"0\n\x10\x41\x64\x64\x41\x64\x64onsRequest\x12\x1c\n\x06\x61\x64\x64ons\x18\x01 \x03(\x0b\x32\x0c.proto.Addon\"k\n\x05\x41\x64\x64on\x12%\n\nack_add_on\x18\x01 \x01(\x0b\x32\x0f.proto.AckAddOnH\x00\x12\x32\n\x11kube_proxy_add_on\x18\x02 \x01(\x0b\x32\x15.proto.KubeProxyAddOnH\x00\x42\x07\n\x05\x61\x64\x64on\"7\n\x08\x41\x63kAddOn\x12\x0f\n\x02id\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x0bserviceName\x18\x02 \x01(\tB\x05\n\x03_id\"2\n\x0eKubeProxyAddOn\x12\x14\n\x07version\x18\x01 \x01(\tH\x00\x88\x01\x01\x42\n\n\x08_versionB1Z/github.com/zjaco13/proto-test/sdks/go-sdk/protob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -25,7 +25,9 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_ADDADDONSREQUEST']._serialized_start=23
   _globals['_ADDADDONSREQUEST']._serialized_end=71
   _globals['_ADDON']._serialized_start=73
-  _globals['_ADDON']._serialized_end=128
-  _globals['_ACKADDON']._serialized_start=130
-  _globals['_ACKADDON']._serialized_end=185
+  _globals['_ADDON']._serialized_end=180
+  _globals['_ACKADDON']._serialized_start=182
+  _globals['_ACKADDON']._serialized_end=237
+  _globals['_KUBEPROXYADDON']._serialized_start=239
+  _globals['_KUBEPROXYADDON']._serialized_end=289
 # @@protoc_insertion_point(module_scope)

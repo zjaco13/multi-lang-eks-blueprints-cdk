@@ -12,10 +12,12 @@ class AddAddonsRequest(_message.Message):
     def __init__(self, addons: _Optional[_Iterable[_Union[Addon, _Mapping]]] = ...) -> None: ...
 
 class Addon(_message.Message):
-    __slots__ = ["ack_add_on"]
+    __slots__ = ["ack_add_on", "kube_proxy_add_on"]
     ACK_ADD_ON_FIELD_NUMBER: _ClassVar[int]
+    KUBE_PROXY_ADD_ON_FIELD_NUMBER: _ClassVar[int]
     ack_add_on: AckAddOn
-    def __init__(self, ack_add_on: _Optional[_Union[AckAddOn, _Mapping]] = ...) -> None: ...
+    kube_proxy_add_on: KubeProxyAddOn
+    def __init__(self, ack_add_on: _Optional[_Union[AckAddOn, _Mapping]] = ..., kube_proxy_add_on: _Optional[_Union[KubeProxyAddOn, _Mapping]] = ...) -> None: ...
 
 class AckAddOn(_message.Message):
     __slots__ = ["id", "serviceName"]
@@ -24,3 +26,9 @@ class AckAddOn(_message.Message):
     id: str
     serviceName: str
     def __init__(self, id: _Optional[str] = ..., serviceName: _Optional[str] = ...) -> None: ...
+
+class KubeProxyAddOn(_message.Message):
+    __slots__ = ["version"]
+    VERSION_FIELD_NUMBER: _ClassVar[int]
+    version: str
+    def __init__(self, version: _Optional[str] = ...) -> None: ...

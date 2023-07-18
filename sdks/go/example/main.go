@@ -22,7 +22,7 @@ func build(client pb.ClusterServiceClient, ctx context.Context) {
 	}))
 
 	addons := []*pb.Addon{}
-	addons = append(addons, &pb.Addon{Addon: &pb.Addon_AckAddOn{AckAddOn: &pb.AckAddOn{ServiceName: "eks"}}})
+	addons = append(addons, &pb.Addon{Addon: &pb.Addon_KubeProxyAddOn{KubeProxyAddOn: &pb.KubeProxyAddOn{}}})
 	fmt.Println(client.AddAddons(ctx, &pb.AddAddonsRequest{
 		Addons: addons,
 	}))

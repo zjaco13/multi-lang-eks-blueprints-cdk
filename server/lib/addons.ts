@@ -7,11 +7,16 @@ export interface AddAddonsRequest {
 
 export interface Addon {
   ackAddOn?: AckAddOn | undefined;
+  kubeProxyAddOn?: KubeProxyAddOn | undefined;
 }
 
 export interface AckAddOn {
   id?: string | undefined;
   serviceName: string;
+}
+
+export interface KubeProxyAddOn {
+  version?: string | undefined;
 }
 
 function createBaseAddAddonsRequest(): AddAddonsRequest {
@@ -75,13 +80,16 @@ export const AddAddonsRequest = {
 };
 
 function createBaseAddon(): Addon {
-  return { ackAddOn: undefined };
+  return { ackAddOn: undefined, kubeProxyAddOn: undefined };
 }
 
 export const Addon = {
   encode(message: Addon, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.ackAddOn !== undefined) {
       AckAddOn.encode(message.ackAddOn, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.kubeProxyAddOn !== undefined) {
+      KubeProxyAddOn.encode(message.kubeProxyAddOn, writer.uint32(18).fork()).ldelim();
     }
     return writer;
   },
@@ -100,6 +108,13 @@ export const Addon = {
 
           message.ackAddOn = AckAddOn.decode(reader, reader.uint32());
           continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.kubeProxyAddOn = KubeProxyAddOn.decode(reader, reader.uint32());
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -110,12 +125,17 @@ export const Addon = {
   },
 
   fromJSON(object: any): Addon {
-    return { ackAddOn: isSet(object.ackAddOn) ? AckAddOn.fromJSON(object.ackAddOn) : undefined };
+    return {
+      ackAddOn: isSet(object.ackAddOn) ? AckAddOn.fromJSON(object.ackAddOn) : undefined,
+      kubeProxyAddOn: isSet(object.kubeProxyAddOn) ? KubeProxyAddOn.fromJSON(object.kubeProxyAddOn) : undefined,
+    };
   },
 
   toJSON(message: Addon): unknown {
     const obj: any = {};
     message.ackAddOn !== undefined && (obj.ackAddOn = message.ackAddOn ? AckAddOn.toJSON(message.ackAddOn) : undefined);
+    message.kubeProxyAddOn !== undefined &&
+      (obj.kubeProxyAddOn = message.kubeProxyAddOn ? KubeProxyAddOn.toJSON(message.kubeProxyAddOn) : undefined);
     return obj;
   },
 
@@ -127,6 +147,9 @@ export const Addon = {
     const message = createBaseAddon();
     message.ackAddOn = (object.ackAddOn !== undefined && object.ackAddOn !== null)
       ? AckAddOn.fromPartial(object.ackAddOn)
+      : undefined;
+    message.kubeProxyAddOn = (object.kubeProxyAddOn !== undefined && object.kubeProxyAddOn !== null)
+      ? KubeProxyAddOn.fromPartial(object.kubeProxyAddOn)
       : undefined;
     return message;
   },
@@ -199,6 +222,62 @@ export const AckAddOn = {
     const message = createBaseAckAddOn();
     message.id = object.id ?? undefined;
     message.serviceName = object.serviceName ?? "";
+    return message;
+  },
+};
+
+function createBaseKubeProxyAddOn(): KubeProxyAddOn {
+  return { version: undefined };
+}
+
+export const KubeProxyAddOn = {
+  encode(message: KubeProxyAddOn, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.version !== undefined) {
+      writer.uint32(10).string(message.version);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): KubeProxyAddOn {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseKubeProxyAddOn();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.version = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): KubeProxyAddOn {
+    return { version: isSet(object.version) ? String(object.version) : undefined };
+  },
+
+  toJSON(message: KubeProxyAddOn): unknown {
+    const obj: any = {};
+    message.version !== undefined && (obj.version = message.version);
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<KubeProxyAddOn>, I>>(base?: I): KubeProxyAddOn {
+    return KubeProxyAddOn.fromPartial(base ?? {});
+  },
+
+  fromPartial<I extends Exact<DeepPartial<KubeProxyAddOn>, I>>(object: I): KubeProxyAddOn {
+    const message = createBaseKubeProxyAddOn();
+    message.version = object.version ?? undefined;
     return message;
   },
 };
