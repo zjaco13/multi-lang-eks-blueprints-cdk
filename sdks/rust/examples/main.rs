@@ -5,7 +5,7 @@ use futures::{stream::FuturesOrdered, TryFutureExt};
 
 #[tokio::main]
 async fn main() {
-    builder::await_build::<Fut: Future<Output = Result<tonic::Response<proto::ApiResponse>, tonic::Status>>>>(build);
+    builder::await_build(build);
 }
 
 fn build<Fut>(futs: &mut FuturesOrdered<Fut>, client: &mut ClusterServiceClient<Channel>) -> Result<tonic::Response<proto::ApiResponse>, tonic::Status>

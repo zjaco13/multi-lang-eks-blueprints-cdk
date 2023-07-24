@@ -1,12 +1,9 @@
-use core::fmt;
 use std::{future::Future, error::Error};
 
 use futures::{stream::FuturesOrdered, StreamExt};
 use tonic::transport::Channel;
 
 use crate::proto::{cluster_service_client::ClusterServiceClient, self};
-use async_trait::async_trait;
-
 
 pub async fn await_build<F, Fut>(f: F) -> Result<(), Box<dyn Error + Send + Sync + 'static>>
 where
