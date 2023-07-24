@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	pb "github.com/zjaco13/multi-lang-eks-blueprints-cdk/sdks/go-sdk/proto"
+	pb "github.com/zjaco13/multi-lang-eks-blueprints-cdk/sdks/go-sdk/codegen"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )

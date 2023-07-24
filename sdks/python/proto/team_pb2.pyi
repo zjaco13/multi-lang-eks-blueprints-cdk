@@ -6,10 +6,12 @@ from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Map
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class AddTeamsRequest(_message.Message):
-    __slots__ = ["teams"]
+    __slots__ = ["cluster_name", "teams"]
+    CLUSTER_NAME_FIELD_NUMBER: _ClassVar[int]
     TEAMS_FIELD_NUMBER: _ClassVar[int]
+    cluster_name: str
     teams: _containers.RepeatedCompositeFieldContainer[Team]
-    def __init__(self, teams: _Optional[_Iterable[_Union[Team, _Mapping]]] = ...) -> None: ...
+    def __init__(self, cluster_name: _Optional[str] = ..., teams: _Optional[_Iterable[_Union[Team, _Mapping]]] = ...) -> None: ...
 
 class Team(_message.Message):
     __slots__ = ["generic_team", "platform_team", "application_team"]
@@ -27,6 +29,14 @@ class GenericTeam(_message.Message):
     name: str
     def __init__(self, name: _Optional[str] = ...) -> None: ...
 
+class AddPlatformTeamRequest(_message.Message):
+    __slots__ = ["cluster_name", "props"]
+    CLUSTER_NAME_FIELD_NUMBER: _ClassVar[int]
+    PROPS_FIELD_NUMBER: _ClassVar[int]
+    cluster_name: str
+    props: TeamProps
+    def __init__(self, cluster_name: _Optional[str] = ..., props: _Optional[_Union[TeamProps, _Mapping]] = ...) -> None: ...
+
 class PlatformTeam(_message.Message):
     __slots__ = ["name"]
     NAME_FIELD_NUMBER: _ClassVar[int]
@@ -34,6 +44,20 @@ class PlatformTeam(_message.Message):
     def __init__(self, name: _Optional[str] = ...) -> None: ...
 
 class ApplicationTeam(_message.Message):
+    __slots__ = ["name"]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    name: str
+    def __init__(self, name: _Optional[str] = ...) -> None: ...
+
+class AddApplicationTeamRequest(_message.Message):
+    __slots__ = ["cluster_name", "props"]
+    CLUSTER_NAME_FIELD_NUMBER: _ClassVar[int]
+    PROPS_FIELD_NUMBER: _ClassVar[int]
+    cluster_name: str
+    props: TeamProps
+    def __init__(self, cluster_name: _Optional[str] = ..., props: _Optional[_Union[TeamProps, _Mapping]] = ...) -> None: ...
+
+class TeamProps(_message.Message):
     __slots__ = ["name"]
     NAME_FIELD_NUMBER: _ClassVar[int]
     name: str

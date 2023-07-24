@@ -1,20 +1,30 @@
 syntax="proto3";
-package proto;
+package codegen;
+option go_package  = "github.com/zjaco13/multi-lang-eks-blueprints-cdk/codegen";
 import "team.proto";
 import "cluster_provider.proto";
 import "resource_provider.proto";
 import "addons.proto";
 
-option go_package = "github.com/zjaco13/proto-test/sdks/go-sdk/proto";
-
 service ClusterService {
     rpc CreateCluster (CreateClusterRequest) returns (APIResponse);
-    rpc AddTeams (AddTeamsRequest) returns (APIResponse);
-    rpc AddClusterProvider (AddClusterProviderRequest) returns (APIResponse);
-    rpc AddResourceProvider (AddResourceProviderRequest) returns (APIResponse);
-    rpc AddAddons (AddAddonsRequest) returns (APIResponse);
     rpc BuildCluster (BuildClusterRequest) returns (APIResponse);
-    //rpc SendCluster (EksBlueprint) returns (EksBlueprintResponse);
+    rpc CloneCluster (CloneClusterRequest) returns (APIResponse);
+
+    rpc AddPlatformTeam(AddPlatformTeamRequest) returns (APIResponse);
+    rpc AddApplicationTeam(AddApplicationTeamRequest) returns (APIResponse);
+    rpc AddTeams (AddTeamsRequest) returns (APIResponse);
+
+    rpc AddMngClusterProvider(AddMngClusterProviderRequest) returns (APIResponse);
+    rpc AddAsgClusterProvider(AddAsgClusterProviderRequest) returns (APIResponse);
+    rpc AddClusterProvider (AddClusterProviderRequest) returns (APIResponse);
+
+    rpc AddVpcProvider (AddVpcProviderRequest) returns (APIResponse);
+    rpc AddResourceProvider (AddResourceProviderRequest) returns (APIResponse);
+
+    rpc AddAckAddOn (AddAckAddOnRequest) returns (APIResponse);
+    rpc AddKubeProxyAddOn (AddKubeProxyAddOnRequest) returns (APIResponse);
+    rpc AddAddons (AddAddonsRequest) returns (APIResponse);
 }
 
 message APIResponse{
@@ -28,7 +38,13 @@ message CreateClusterRequest {
 
 
 message BuildClusterRequest {
-    string clusterName = 1;
+    string cluster_name = 1;
     optional string account = 2;
     optional string region = 3;
+}
+
+message CloneClusterRequest {
+    string cluster_name = 1;
+    optional string region = 2;
+    optional string account = 3;
 }

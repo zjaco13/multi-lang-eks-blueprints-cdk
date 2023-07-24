@@ -1,11 +1,10 @@
 syntax="proto3";
-package proto;
-
-option go_package = "github.com/zjaco13/proto-test/sdks/go-sdk/proto";
+package codegen;
+option go_package  = "github.com/zjaco13/multi-lang-eks-blueprints-cdk/codegen";
 
 message AddClusterProviderRequest {
-    ClusterProvider cluster_provider = 1;
-
+    string cluster_name = 1;
+    ClusterProvider cluster_provider = 2;
 }
 
 message ClusterProvider {
@@ -15,10 +14,21 @@ message ClusterProvider {
     };
 }
 
+
+message AddAsgClusterProviderRequest {
+    string cluster_name = 1;
+    AsgClusterProvider asg_cluster_provider = 2;
+}
+
 message AsgClusterProvider {
     optional string name = 1;
     string version = 2;
     string id = 3;
+}
+
+message AddMngClusterProviderRequest {
+    string cluster_name = 1;
+    MngClusterProvider mng_cluster_provider = 2;
 }
 
 message MngClusterProvider {

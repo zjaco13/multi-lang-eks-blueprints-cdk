@@ -1,10 +1,11 @@
 syntax="proto3";
-package proto;
-option go_package = "github.com/zjaco13/proto-test/sdks/go-sdk/proto";
+package codegen;
+option go_package  = "github.com/zjaco13/multi-lang-eks-blueprints-cdk/codegen";
 
 message AddResourceProviderRequest {
-    string name = 1;
-    ResourceProvider resource_provider = 2;
+    string cluster_name = 1;
+    string name = 2;
+    ResourceProvider resource_provider = 3;
 }
 
 message ResourceProvider {
@@ -12,6 +13,11 @@ message ResourceProvider {
         VpcProvider vpc_provider = 1;
     };
 
+}
+message AddVpcProviderRequest{
+    string cluster_name = 1;
+    string name = 2;
+    VpcProvider vpc_provider = 3;
 }
 
 message VpcProvider{

@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16\x63luster_provider.proto\x12\x05proto\"M\n\x19\x41\x64\x64\x43lusterProviderRequest\x12\x30\n\x10\x63luster_provider\x18\x01 \x01(\x0b\x32\x16.proto.ClusterProvider\"\x9b\x01\n\x0f\x43lusterProvider\x12\x39\n\x14\x61sg_cluster_provider\x18\x01 \x01(\x0b\x32\x19.proto.AsgClusterProviderH\x00\x12\x39\n\x14mng_cluster_provider\x18\x02 \x01(\x0b\x32\x19.proto.MngClusterProviderH\x00\x42\x12\n\x10\x63luster_provider\"M\n\x12\x41sgClusterProvider\x12\x11\n\x04name\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x0f\n\x07version\x18\x02 \x01(\t\x12\n\n\x02id\x18\x03 \x01(\tB\x07\n\x05_name\"A\n\x12MngClusterProvider\x12\x11\n\x04name\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x0f\n\x07version\x18\x02 \x01(\tB\x07\n\x05_nameB1Z/github.com/zjaco13/proto-test/sdks/go-sdk/protob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16\x63luster_provider.proto\x12\x07\x63odegen\"e\n\x19\x41\x64\x64\x43lusterProviderRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12\x32\n\x10\x63luster_provider\x18\x02 \x01(\x0b\x32\x18.codegen.ClusterProvider\"\x9f\x01\n\x0f\x43lusterProvider\x12;\n\x14\x61sg_cluster_provider\x18\x01 \x01(\x0b\x32\x1b.codegen.AsgClusterProviderH\x00\x12;\n\x14mng_cluster_provider\x18\x02 \x01(\x0b\x32\x1b.codegen.MngClusterProviderH\x00\x42\x12\n\x10\x63luster_provider\"o\n\x1c\x41\x64\x64\x41sgClusterProviderRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12\x39\n\x14\x61sg_cluster_provider\x18\x02 \x01(\x0b\x32\x1b.codegen.AsgClusterProvider\"M\n\x12\x41sgClusterProvider\x12\x11\n\x04name\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x0f\n\x07version\x18\x02 \x01(\t\x12\n\n\x02id\x18\x03 \x01(\tB\x07\n\x05_name\"o\n\x1c\x41\x64\x64MngClusterProviderRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12\x39\n\x14mng_cluster_provider\x18\x02 \x01(\x0b\x32\x1b.codegen.MngClusterProvider\"A\n\x12MngClusterProvider\x12\x11\n\x04name\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x0f\n\x07version\x18\x02 \x01(\tB\x07\n\x05_nameB:Z8github.com/zjaco13/multi-lang-eks-blueprints-cdk/codegenb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -21,13 +21,17 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'cluster_provider_pb2', _glo
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'Z/github.com/zjaco13/proto-test/sdks/go-sdk/proto'
-  _globals['_ADDCLUSTERPROVIDERREQUEST']._serialized_start=33
-  _globals['_ADDCLUSTERPROVIDERREQUEST']._serialized_end=110
-  _globals['_CLUSTERPROVIDER']._serialized_start=113
-  _globals['_CLUSTERPROVIDER']._serialized_end=268
-  _globals['_ASGCLUSTERPROVIDER']._serialized_start=270
-  _globals['_ASGCLUSTERPROVIDER']._serialized_end=347
-  _globals['_MNGCLUSTERPROVIDER']._serialized_start=349
-  _globals['_MNGCLUSTERPROVIDER']._serialized_end=414
+  DESCRIPTOR._serialized_options = b'Z8github.com/zjaco13/multi-lang-eks-blueprints-cdk/codegen'
+  _globals['_ADDCLUSTERPROVIDERREQUEST']._serialized_start=35
+  _globals['_ADDCLUSTERPROVIDERREQUEST']._serialized_end=136
+  _globals['_CLUSTERPROVIDER']._serialized_start=139
+  _globals['_CLUSTERPROVIDER']._serialized_end=298
+  _globals['_ADDASGCLUSTERPROVIDERREQUEST']._serialized_start=300
+  _globals['_ADDASGCLUSTERPROVIDERREQUEST']._serialized_end=411
+  _globals['_ASGCLUSTERPROVIDER']._serialized_start=413
+  _globals['_ASGCLUSTERPROVIDER']._serialized_end=490
+  _globals['_ADDMNGCLUSTERPROVIDERREQUEST']._serialized_start=492
+  _globals['_ADDMNGCLUSTERPROVIDERREQUEST']._serialized_end=603
+  _globals['_MNGCLUSTERPROVIDER']._serialized_start=605
+  _globals['_MNGCLUSTERPROVIDER']._serialized_end=670
 # @@protoc_insertion_point(module_scope)
