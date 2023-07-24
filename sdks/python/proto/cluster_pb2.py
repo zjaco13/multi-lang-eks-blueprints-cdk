@@ -11,10 +11,10 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
-import team_pb2 as team__pb2
-import cluster_provider_pb2 as cluster__provider__pb2
-import resource_provider_pb2 as resource__provider__pb2
-import addons_pb2 as addons__pb2
+from . import team_pb2 as team__pb2
+from . import cluster_provider_pb2 as cluster__provider__pb2
+from . import resource_provider_pb2 as resource__provider__pb2
+from . import addons_pb2 as addons__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rcluster.proto\x12\x07\x63odegen\x1a\nteam.proto\x1a\x16\x63luster_provider.proto\x1a\x17resource_provider.proto\x1a\x0c\x61\x64\x64ons.proto\"\x1e\n\x0b\x41PIResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\">\n\x14\x43reateClusterRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\x04name\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x07\n\x05_name\"m\n\x13\x42uildClusterRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12\x14\n\x07\x61\x63\x63ount\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x06region\x18\x03 \x01(\tH\x01\x88\x01\x01\x42\n\n\x08_accountB\t\n\x07_region\"m\n\x13\x43loneClusterRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12\x13\n\x06region\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x14\n\x07\x61\x63\x63ount\x18\x03 \x01(\tH\x01\x88\x01\x01\x42\t\n\x07_regionB\n\n\x08_account2\x98\x08\n\x0e\x43lusterService\x12\x44\n\rCreateCluster\x12\x1d.codegen.CreateClusterRequest\x1a\x14.codegen.APIResponse\x12\x42\n\x0c\x42uildCluster\x12\x1c.codegen.BuildClusterRequest\x1a\x14.codegen.APIResponse\x12\x42\n\x0c\x43loneCluster\x12\x1c.codegen.CloneClusterRequest\x1a\x14.codegen.APIResponse\x12H\n\x0f\x41\x64\x64PlatformTeam\x12\x1f.codegen.AddPlatformTeamRequest\x1a\x14.codegen.APIResponse\x12N\n\x12\x41\x64\x64\x41pplicationTeam\x12\".codegen.AddApplicationTeamRequest\x1a\x14.codegen.APIResponse\x12:\n\x08\x41\x64\x64Teams\x12\x18.codegen.AddTeamsRequest\x1a\x14.codegen.APIResponse\x12T\n\x15\x41\x64\x64MngClusterProvider\x12%.codegen.AddMngClusterProviderRequest\x1a\x14.codegen.APIResponse\x12T\n\x15\x41\x64\x64\x41sgClusterProvider\x12%.codegen.AddAsgClusterProviderRequest\x1a\x14.codegen.APIResponse\x12N\n\x12\x41\x64\x64\x43lusterProvider\x12\".codegen.AddClusterProviderRequest\x1a\x14.codegen.APIResponse\x12\x46\n\x0e\x41\x64\x64VpcProvider\x12\x1e.codegen.AddVpcProviderRequest\x1a\x14.codegen.APIResponse\x12P\n\x13\x41\x64\x64ResourceProvider\x12#.codegen.AddResourceProviderRequest\x1a\x14.codegen.APIResponse\x12@\n\x0b\x41\x64\x64\x41\x63kAddOn\x12\x1b.codegen.AddAckAddOnRequest\x1a\x14.codegen.APIResponse\x12L\n\x11\x41\x64\x64KubeProxyAddOn\x12!.codegen.AddKubeProxyAddOnRequest\x1a\x14.codegen.APIResponse\x12<\n\tAddAddons\x12\x19.codegen.AddAddonsRequest\x1a\x14.codegen.APIResponseB:Z8github.com/zjaco13/multi-lang-eks-blueprints-cdk/codegenb\x06proto3')

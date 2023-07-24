@@ -2,11 +2,11 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import addons_pb2 as addons__pb2
-import cluster_pb2 as cluster__pb2
-import cluster_provider_pb2 as cluster__provider__pb2
-import resource_provider_pb2 as resource__provider__pb2
-import team_pb2 as team__pb2
+from . import addons_pb2 as addons__pb2
+from . import cluster_pb2 as cluster__pb2
+from . import cluster_provider_pb2 as cluster__provider__pb2
+from . import resource_provider_pb2 as resource__provider__pb2
+from . import team_pb2 as team__pb2
 
 
 class ClusterServiceStub(object):
