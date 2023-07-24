@@ -32,6 +32,15 @@ python3 -m grpc_tools.protoc \
 	--python_out=$PY_DIR --pyi_out=$PY_DIR \
 	--grpc_python_out=$PY_DIR \
 	$PROTO_FILES
+sed -i "" "s/import team/from . import team/g" $PY_DIR/cluster_pb2.py
+sed -i "" "s/import addons/from . import addons/g" $PY_DIR/cluster_pb2.py
+sed -i "" "s/import cluster/from . import cluster/g" $PY_DIR/cluster_pb2.py
+sed -i "" "s/import resource/from . import resource/g" $PY_DIR/cluster_pb2.py
+
+sed -i "" "s/import team/from . import team/g" $PY_DIR/cluster_pb2_grpc.py
+sed -i "" "s/import addons/from . import addons/g" $PY_DIR/cluster_pb2_grpc.py
+sed -i "" "s/import cluster/from . import cluster/g" $PY_DIR/cluster_pb2_grpc.py
+sed -i "" "s/import resource/from . import resource/g" $PY_DIR/cluster_pb2_grpc.py
 
 echo "Generating .rs files"
 cargo build --manifest-path=./sdks/rust/Cargo.toml
