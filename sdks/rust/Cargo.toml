@@ -14,6 +14,7 @@ tokio-stream = "0.1"
 async-stream = "0.2"
 async-trait = "0.1.71"
 futures = "0.3.28"
+async_fn_traits = "0.1.1"
 
 [build-dependencies]
 tonic-build = "0.9"
