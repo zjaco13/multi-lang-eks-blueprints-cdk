@@ -1,6 +1,6 @@
-import team_pb2 as _team_pb2
-import cluster_provider_pb2 as _cluster_provider_pb2
-import resource_provider_pb2 as _resource_provider_pb2
+import teams_pb2 as _teams_pb2
+import cluster_providers_pb2 as _cluster_providers_pb2
+import resource_providers_pb2 as _resource_providers_pb2
 import addons_pb2 as _addons_pb2
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message

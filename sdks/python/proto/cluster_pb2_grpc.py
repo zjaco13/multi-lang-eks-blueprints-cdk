@@ -4,9 +4,9 @@ import grpc
 
 from . import addons_pb2 as addons__pb2
 from . import cluster_pb2 as cluster__pb2
-from . import cluster_provider_pb2 as cluster__provider__pb2
-from . import resource_provider_pb2 as resource__provider__pb2
-from . import team_pb2 as team__pb2
+from . import cluster_providers_pb2 as cluster__providers__pb2
+from . import resource_providers_pb2 as resource__providers__pb2
+from . import teams_pb2 as teams__pb2
 
 
 class ClusterServiceStub(object):
@@ -35,42 +35,42 @@ class ClusterServiceStub(object):
                 )
         self.AddPlatformTeam = channel.unary_unary(
                 '/codegen.ClusterService/AddPlatformTeam',
-                request_serializer=team__pb2.AddPlatformTeamRequest.SerializeToString,
+                request_serializer=teams__pb2.AddPlatformTeamRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.AddApplicationTeam = channel.unary_unary(
                 '/codegen.ClusterService/AddApplicationTeam',
-                request_serializer=team__pb2.AddApplicationTeamRequest.SerializeToString,
+                request_serializer=teams__pb2.AddApplicationTeamRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.AddTeams = channel.unary_unary(
                 '/codegen.ClusterService/AddTeams',
-                request_serializer=team__pb2.AddTeamsRequest.SerializeToString,
+                request_serializer=teams__pb2.AddTeamsRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.AddMngClusterProvider = channel.unary_unary(
                 '/codegen.ClusterService/AddMngClusterProvider',
-                request_serializer=cluster__provider__pb2.AddMngClusterProviderRequest.SerializeToString,
+                request_serializer=cluster__providers__pb2.AddMngClusterProviderRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.AddAsgClusterProvider = channel.unary_unary(
                 '/codegen.ClusterService/AddAsgClusterProvider',
-                request_serializer=cluster__provider__pb2.AddAsgClusterProviderRequest.SerializeToString,
+                request_serializer=cluster__providers__pb2.AddAsgClusterProviderRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.AddClusterProvider = channel.unary_unary(
                 '/codegen.ClusterService/AddClusterProvider',
-                request_serializer=cluster__provider__pb2.AddClusterProviderRequest.SerializeToString,
+                request_serializer=cluster__providers__pb2.AddClusterProviderRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.AddVpcProvider = channel.unary_unary(
                 '/codegen.ClusterService/AddVpcProvider',
-                request_serializer=resource__provider__pb2.AddVpcProviderRequest.SerializeToString,
+                request_serializer=resource__providers__pb2.AddVpcProviderRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.AddResourceProvider = channel.unary_unary(
                 '/codegen.ClusterService/AddResourceProvider',
-                request_serializer=resource__provider__pb2.AddResourceProviderRequest.SerializeToString,
+                request_serializer=resource__providers__pb2.AddResourceProviderRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
         self.AddAckAddOn = channel.unary_unary(
@@ -197,42 +197,42 @@ def add_ClusterServiceServicer_to_server(servicer, server):
             ),
             'AddPlatformTeam': grpc.unary_unary_rpc_method_handler(
                     servicer.AddPlatformTeam,
-                    request_deserializer=team__pb2.AddPlatformTeamRequest.FromString,
+                    request_deserializer=teams__pb2.AddPlatformTeamRequest.FromString,
                     response_serializer=cluster__pb2.APIResponse.SerializeToString,
             ),
             'AddApplicationTeam': grpc.unary_unary_rpc_method_handler(
                     servicer.AddApplicationTeam,
-                    request_deserializer=team__pb2.AddApplicationTeamRequest.FromString,
+                    request_deserializer=teams__pb2.AddApplicationTeamRequest.FromString,
                     response_serializer=cluster__pb2.APIResponse.SerializeToString,
             ),
             'AddTeams': grpc.unary_unary_rpc_method_handler(
                     servicer.AddTeams,
-                    request_deserializer=team__pb2.AddTeamsRequest.FromString,
+                    request_deserializer=teams__pb2.AddTeamsRequest.FromString,
                     response_serializer=cluster__pb2.APIResponse.SerializeToString,
             ),
             'AddMngClusterProvider': grpc.unary_unary_rpc_method_handler(
                     servicer.AddMngClusterProvider,
-                    request_deserializer=cluster__provider__pb2.AddMngClusterProviderRequest.FromString,
+                    request_deserializer=cluster__providers__pb2.AddMngClusterProviderRequest.FromString,
                     response_serializer=cluster__pb2.APIResponse.SerializeToString,
             ),
             'AddAsgClusterProvider': grpc.unary_unary_rpc_method_handler(
                     servicer.AddAsgClusterProvider,
-                    request_deserializer=cluster__provider__pb2.AddAsgClusterProviderRequest.FromString,
+                    request_deserializer=cluster__providers__pb2.AddAsgClusterProviderRequest.FromString,
                     response_serializer=cluster__pb2.APIResponse.SerializeToString,
             ),
             'AddClusterProvider': grpc.unary_unary_rpc_method_handler(
                     servicer.AddClusterProvider,
-                    request_deserializer=cluster__provider__pb2.AddClusterProviderRequest.FromString,
+                    request_deserializer=cluster__providers__pb2.AddClusterProviderRequest.FromString,
                     response_serializer=cluster__pb2.APIResponse.SerializeToString,
             ),
             'AddVpcProvider': grpc.unary_unary_rpc_method_handler(
                     servicer.AddVpcProvider,
-                    request_deserializer=resource__provider__pb2.AddVpcProviderRequest.FromString,
+                    request_deserializer=resource__providers__pb2.AddVpcProviderRequest.FromString,
                     response_serializer=cluster__pb2.APIResponse.SerializeToString,
             ),
             'AddResourceProvider': grpc.unary_unary_rpc_method_handler(
                     servicer.AddResourceProvider,
-                    request_deserializer=resource__provider__pb2.AddResourceProviderRequest.FromString,
+                    request_deserializer=resource__providers__pb2.AddResourceProviderRequest.FromString,
                     response_serializer=cluster__pb2.APIResponse.SerializeToString,
             ),
             'AddAckAddOn': grpc.unary_unary_rpc_method_handler(
@@ -323,7 +323,7 @@ class ClusterService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/codegen.ClusterService/AddPlatformTeam',
-            team__pb2.AddPlatformTeamRequest.SerializeToString,
+            teams__pb2.AddPlatformTeamRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -340,7 +340,7 @@ class ClusterService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/codegen.ClusterService/AddApplicationTeam',
-            team__pb2.AddApplicationTeamRequest.SerializeToString,
+            teams__pb2.AddApplicationTeamRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -357,7 +357,7 @@ class ClusterService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/codegen.ClusterService/AddTeams',
-            team__pb2.AddTeamsRequest.SerializeToString,
+            teams__pb2.AddTeamsRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -374,7 +374,7 @@ class ClusterService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/codegen.ClusterService/AddMngClusterProvider',
-            cluster__provider__pb2.AddMngClusterProviderRequest.SerializeToString,
+            cluster__providers__pb2.AddMngClusterProviderRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -391,7 +391,7 @@ class ClusterService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/codegen.ClusterService/AddAsgClusterProvider',
-            cluster__provider__pb2.AddAsgClusterProviderRequest.SerializeToString,
+            cluster__providers__pb2.AddAsgClusterProviderRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -408,7 +408,7 @@ class ClusterService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/codegen.ClusterService/AddClusterProvider',
-            cluster__provider__pb2.AddClusterProviderRequest.SerializeToString,
+            cluster__providers__pb2.AddClusterProviderRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -425,7 +425,7 @@ class ClusterService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/codegen.ClusterService/AddVpcProvider',
-            resource__provider__pb2.AddVpcProviderRequest.SerializeToString,
+            resource__providers__pb2.AddVpcProviderRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -442,7 +442,7 @@ class ClusterService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/codegen.ClusterService/AddResourceProvider',
-            resource__provider__pb2.AddResourceProviderRequest.SerializeToString,
+            resource__providers__pb2.AddResourceProviderRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
