@@ -1,6 +1,6 @@
 syntax="proto3";
 package codegen;
-option go_package  = "github.com/zjaco13/multi-lang-eks-blueprints-cdk/codegen";
+option go_package="github.com/zjaco13/sdks/go-sdk/codegen";
 
 message AddTeamsRequest {
     string cluster_name = 1;

@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0c\x61\x64\x64ons.proto\x12\x07\x63odegen\"H\n\x10\x41\x64\x64\x41\x64\x64onsRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12\x1e\n\x06\x61\x64\x64ons\x18\x02 \x03(\x0b\x32\x0e.codegen.Addon\"o\n\x05\x41\x64\x64on\x12\'\n\nack_add_on\x18\x01 \x01(\x0b\x32\x11.codegen.AckAddOnH\x00\x12\x34\n\x11kube_proxy_add_on\x18\x02 \x01(\x0b\x32\x17.codegen.KubeProxyAddOnH\x00\x42\x07\n\x05\x61\x64\x64on\"Q\n\x12\x41\x64\x64\x41\x63kAddOnRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12%\n\nack_add_on\x18\x02 \x01(\x0b\x32\x11.codegen.AckAddOn\"7\n\x08\x41\x63kAddOn\x12\x0f\n\x02id\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x0bserviceName\x18\x02 \x01(\tB\x05\n\x03_id\"d\n\x18\x41\x64\x64KubeProxyAddOnRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12\x32\n\x11kube_proxy_add_on\x18\x02 \x01(\x0b\x32\x17.codegen.KubeProxyAddOn\"2\n\x0eKubeProxyAddOn\x12\x14\n\x07version\x18\x01 \x01(\tH\x00\x88\x01\x01\x42\n\n\x08_versionB:Z8github.com/zjaco13/multi-lang-eks-blueprints-cdk/codegenb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0c\x61\x64\x64ons.proto\x12\x07\x63odegen\"H\n\x10\x41\x64\x64\x41\x64\x64onsRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12\x1e\n\x06\x61\x64\x64ons\x18\x02 \x03(\x0b\x32\x0e.codegen.Addon\"o\n\x05\x41\x64\x64on\x12\'\n\nack_add_on\x18\x01 \x01(\x0b\x32\x11.codegen.AckAddOnH\x00\x12\x34\n\x11kube_proxy_add_on\x18\x02 \x01(\x0b\x32\x17.codegen.KubeProxyAddOnH\x00\x42\x07\n\x05\x61\x64\x64on\"Q\n\x12\x41\x64\x64\x41\x63kAddOnRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12%\n\nack_add_on\x18\x02 \x01(\x0b\x32\x11.codegen.AckAddOn\"7\n\x08\x41\x63kAddOn\x12\x0f\n\x02id\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x0bserviceName\x18\x02 \x01(\tB\x05\n\x03_id\"d\n\x18\x41\x64\x64KubeProxyAddOnRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12\x32\n\x11kube_proxy_add_on\x18\x02 \x01(\x0b\x32\x17.codegen.KubeProxyAddOn\"2\n\x0eKubeProxyAddOn\x12\x14\n\x07version\x18\x01 \x01(\tH\x00\x88\x01\x01\x42\n\n\x08_versionB(Z&github.com/zjaco13/sdks/go-sdk/codegenb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -21,7 +21,7 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'addons_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'Z8github.com/zjaco13/multi-lang-eks-blueprints-cdk/codegen'
+  DESCRIPTOR._serialized_options = b'Z&github.com/zjaco13/sdks/go-sdk/codegen'
   _globals['_ADDADDONSREQUEST']._serialized_start=25
   _globals['_ADDADDONSREQUEST']._serialized_end=97
   _globals['_ADDON']._serialized_start=99

@@ -1,3 +1,3 @@
 pub mod builder;
 
-pub mod proto;
+pub mod codegen;

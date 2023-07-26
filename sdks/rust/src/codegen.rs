@@ -249,9 +249,13 @@ pub struct BuildClusterRequest {
 pub struct CloneClusterRequest {
     #[prost(string, tag = "1")]
     pub cluster_name: ::prost::alloc::string::String,
-    #[prost(string, optional, tag = "2")]
-    pub region: ::core::option::Option<::prost::alloc::string::String>,
+    #[prost(string, tag = "2")]
+    pub new_cluster_id: ::prost::alloc::string::String,
     #[prost(string, optional, tag = "3")]
+    pub new_cluster_name: ::core::option::Option<::prost::alloc::string::String>,
+    #[prost(string, optional, tag = "4")]
+    pub region: ::core::option::Option<::prost::alloc::string::String>,
+    #[prost(string, optional, tag = "5")]
     pub account: ::core::option::Option<::prost::alloc::string::String>,
 }
 /// Generated client implementations.

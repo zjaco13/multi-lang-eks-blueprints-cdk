@@ -33,11 +33,15 @@ class BuildClusterRequest(_message.Message):
     def __init__(self, cluster_name: _Optional[str] = ..., account: _Optional[str] = ..., region: _Optional[str] = ...) -> None: ...
 
 class CloneClusterRequest(_message.Message):
-    __slots__ = ["cluster_name", "region", "account"]
+    __slots__ = ["cluster_name", "new_cluster_id", "new_cluster_name", "region", "account"]
     CLUSTER_NAME_FIELD_NUMBER: _ClassVar[int]
+    NEW_CLUSTER_ID_FIELD_NUMBER: _ClassVar[int]
+    NEW_CLUSTER_NAME_FIELD_NUMBER: _ClassVar[int]
     REGION_FIELD_NUMBER: _ClassVar[int]
     ACCOUNT_FIELD_NUMBER: _ClassVar[int]
     cluster_name: str
+    new_cluster_id: str
+    new_cluster_name: str
     region: str
     account: str
-    def __init__(self, cluster_name: _Optional[str] = ..., region: _Optional[str] = ..., account: _Optional[str] = ...) -> None: ...
+    def __init__(self, cluster_name: _Optional[str] = ..., new_cluster_id: _Optional[str] = ..., new_cluster_name: _Optional[str] = ..., region: _Optional[str] = ..., account: _Optional[str] = ...) -> None: ...

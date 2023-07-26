@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x17resource_provider.proto\x12\x07\x63odegen\"v\n\x1a\x41\x64\x64ResourceProviderRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x34\n\x11resource_provider\x18\x03 \x01(\x0b\x32\x19.codegen.ResourceProvider\"U\n\x10ResourceProvider\x12,\n\x0cvpc_provider\x18\x01 \x01(\x0b\x32\x14.codegen.VpcProviderH\x00\x42\x13\n\x11resource_provider\"g\n\x15\x41\x64\x64VpcProviderRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12*\n\x0cvpc_provider\x18\x03 \x01(\x0b\x32\x14.codegen.VpcProvider\"+\n\x0bVpcProvider\x12\x12\n\x05vpcId\x18\x01 \x01(\tH\x00\x88\x01\x01\x42\x08\n\x06_vpcIdB:Z8github.com/zjaco13/multi-lang-eks-blueprints-cdk/codegenb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x17resource_provider.proto\x12\x07\x63odegen\"v\n\x1a\x41\x64\x64ResourceProviderRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x34\n\x11resource_provider\x18\x03 \x01(\x0b\x32\x19.codegen.ResourceProvider\"U\n\x10ResourceProvider\x12,\n\x0cvpc_provider\x18\x01 \x01(\x0b\x32\x14.codegen.VpcProviderH\x00\x42\x13\n\x11resource_provider\"g\n\x15\x41\x64\x64VpcProviderRequest\x12\x14\n\x0c\x63luster_name\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12*\n\x0cvpc_provider\x18\x03 \x01(\x0b\x32\x14.codegen.VpcProvider\"+\n\x0bVpcProvider\x12\x12\n\x05vpcId\x18\x01 \x01(\tH\x00\x88\x01\x01\x42\x08\n\x06_vpcIdB(Z&github.com/zjaco13/sdks/go-sdk/codegenb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -21,7 +21,7 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'resource_provider_pb2', _gl
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'Z8github.com/zjaco13/multi-lang-eks-blueprints-cdk/codegen'
+  DESCRIPTOR._serialized_options = b'Z&github.com/zjaco13/sdks/go-sdk/codegen'
   _globals['_ADDRESOURCEPROVIDERREQUEST']._serialized_start=36
   _globals['_ADDRESOURCEPROVIDERREQUEST']._serialized_end=154
   _globals['_RESOURCEPROVIDER']._serialized_start=156
