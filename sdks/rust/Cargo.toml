@@ -2,6 +2,12 @@
 name = "rust-sdk"
 version = "0.1.0"
 edition = "2021"
+license = "Apache-2.0"
+exclude = ["examples/", "build.rs"]
+description = "Rust client for EKS Blueprints gRPC API"
+documentation = "https://aws-quickstart.github.io/cdk-eks-blueprints/"
+readme = "README.md"
+repository = "https://github.com/zjaco13/multi-lang-eks-blueprints-cdk"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
