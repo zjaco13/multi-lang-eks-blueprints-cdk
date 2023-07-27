@@ -7,7 +7,7 @@ PROTO_FILES=$(find $PROTO_DIR -type f -iname "*.proto" -exec basename {} \;)
 PROTO_FILE=./proto/cluster.proto
 GO_DIR=sdks/go/codegen
 TS_DIR=server/lib
-PY_DIR=sdks/python/proto
+PY_DIR=sdks/python/src/codegen
 RS_DIR=sdks/rust/src/proto
 
 echo $PROTO_FILES
