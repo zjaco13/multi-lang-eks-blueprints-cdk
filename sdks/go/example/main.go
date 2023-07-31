@@ -31,10 +31,12 @@ func build(client pb.ClusterServiceClient, ctx context.Context) {
 		MngClusterProvider: &pb.MngClusterProvider{Name: &name, Version: "1.27"},
 	}))
 
-	// fmt.Println(client.AddVpcProvider(ctx, &pb.AddVpcProviderRequest{
-	// 	ClusterName: "test-from-go",
-	// 	VpcProvider: &pb.VpcProvider{},
-	// }))
+	id := "default"
+	fmt.Println(client.AddVpcProvider(ctx, &pb.AddVpcProviderRequest{
+		ClusterName: "test-from-go",
+		Name:        "vpc",
+		VpcProvider: &pb.VpcProvider{VpcId: &id},
+	}))
 
 	fmt.Println(client.BuildCluster(ctx, &pb.BuildClusterRequest{ClusterName: "test-from-go"}))
 }
