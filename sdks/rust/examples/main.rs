@@ -1,4 +1,4 @@
-use rust_sdk::{
+use eks_blueprints_rust_sdk::{
     builder::{self},
     codegen::{self, cluster_service_client::ClusterServiceClient},
 };

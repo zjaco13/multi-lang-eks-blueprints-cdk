@@ -3,6 +3,10 @@ __pycache__
 package-lock.json
 cdk.out
 .venv
+venv
+dist
 cdk.context.json
 target
 Cargo.lock
+example-main
+*.egg-info

@@ -1,10 +1,9 @@
-from os import name
-from src import builder
-from src.codegen import addons_pb2
-from src.codegen import teams_pb2 
-from src.codegen import resource_providers_pb2
-from src.codegen import cluster_pb2 
-from src.codegen import cluster_providers_pb2 
+from src.eks_blueprints_python_sdk import builder
+from src.eks_blueprints_python_sdk.codegen import addons_pb2
+from src.eks_blueprints_python_sdk.codegen import teams_pb2 
+from src.eks_blueprints_python_sdk.codegen import resource_providers_pb2
+from src.eks_blueprints_python_sdk.codegen import cluster_pb2 
+from src.eks_blueprints_python_sdk.codegen import cluster_providers_pb2 
 
 def build(stub):
     print(stub.CreateCluster(cluster_pb2.CreateClusterRequest(id="test-from-python")))
@@ -20,4 +19,4 @@ def build(stub):
     print(stub.BuildCluster(cluster_pb2.BuildClusterRequest(cluster_name="test-from-python")))
 
 if __name__ == "__main__":
-   builder.run(build) 
+    builder.run(build)
