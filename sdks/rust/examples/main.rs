@@ -6,7 +6,7 @@ use tonic::transport::Channel;
 
 #[tokio::main]
 async fn main() {
-    builder::await_build(build).await.expect("Error in build");
+    builder::run(build).await.expect("Error in build");
 }
 
 async fn build(client: &mut ClusterServiceClient<Channel>) -> Result<(), tonic::Status> {

@@ -3,7 +3,9 @@ use tonic::transport::Channel;
 
 use crate::codegen::cluster_service_client::ClusterServiceClient;
 
-pub async fn await_build<F>(build: F) -> Result<(), tonic::Status>
+// Pass in a build function that builds an EKS Blueprint and run will connect a client to the grpc server
+// and run the build function on the client
+pub async fn run<F>(build: F) -> Result<(), tonic::Status>
 where
     F: for<'a> AsyncFnOnce1<
         &'a mut ClusterServiceClient<Channel>,
