@@ -22,9 +22,9 @@ cargo new example
 cd example
 ```
 
-Import the sdk (not published yet) and other dependencies
+Import the sdk and other dependencies
 ```bash
-cargo add multi-lang-eks-blueprints-rust-sdk
+cargo add eks-blueprints-rust-sdk
 cargo add tonic
 cargo add tokio
 ```
@@ -39,7 +39,7 @@ use tonic::transport::Channel;
 
 #[tokio::main]
 async fn main() {
-    builder::await_build(build).await.expect("Error in build");
+    builder::run(build).await.expect("Error in build");
 }
 
 async fn build(client: &mut ClusterServiceClient<Channel>) -> Result<(), tonic::Status> {
