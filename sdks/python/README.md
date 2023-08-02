@@ -9,27 +9,35 @@ git checkout blueprints-api-support
 make run-server
 ```
 
-Then run the python example by cloning this repository and running with make, a virtual env with grpcio_tools and protobuf will be created
+Then run the python example by cloning this repository and running with make, a virtual env with grpcio and protobuf will be created
 ```bash
 make python-example
 ```
 
 ## How to use as a package
 
-
 Create a new python file 
 ```bash
 touch main.py
 ```
 
-Import the sdk
+Optionally create a new virtual environment and activate it
 ```bash
-pip install eks-blueprints-python-sdk
+python3 -m venv venv
+source venv/bin/activate
+```
+
+Install the sdk and other dependencies
+```bash
+pip install --index-url https://test.pypi.org/simple/ --no-deps eks-blueprints-python-sdk
+pip install grpcio
+pip install protobuf
 ```
 
 Add this to the main.py file
 ```python
 from eks_blueprints_python_sdk import builder
+
 def build(stub):
     ...
 
@@ -58,6 +66,12 @@ From the server, deploy your EKS Blueprint
 npx cdk -a cdk.out/ deploy
 ```
 
+## Contributing
+
+To compile protobufs to python you will need grpcio-tools installed
+```bash
+pip install grpcio-tools
+```
 
 
 

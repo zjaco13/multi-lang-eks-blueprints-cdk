@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "eks_blueprints_python_sdk"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
     {name = "Zachary Jacobson", email = "zjacobso@amazon.com"}
 ]
@@ -13,7 +13,6 @@ readme="README.md"
 license = {text ="Apache-2.0"}
 dependencies = [
     "grpcio",
-    "grpcio-tools",
     "protobuf",
 ]
 
