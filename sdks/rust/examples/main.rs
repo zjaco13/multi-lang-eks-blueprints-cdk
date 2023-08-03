@@ -48,9 +48,7 @@ async fn build(client: &mut ClusterServiceClient<Channel>) -> Result<(), tonic::
         .add_vpc_provider(codegen::AddVpcProviderRequest {
             cluster_name: String::from("test-from-rust"),
             name: String::from("vpc"),
-            vpc_provider: Some(codegen::VpcProvider {
-                vpc_id: Some(String::from("default")),
-            }),
+            vpc_provider: Some(codegen::VpcProvider { vpc_id: None }),
         })
         .await?;
     println!("{:?}", res);

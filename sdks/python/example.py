@@ -14,7 +14,7 @@ def build(stub):
 
     print(stub.AddKubeProxyAddOn(addons_pb2.AddKubeProxyAddOnRequest(cluster_name="test-from-python", kube_proxy_add_on=addons_pb2.KubeProxyAddOn())))
 
-    print(stub.AddVpcProvider(resource_providers_pb2.AddVpcProviderRequest(cluster_name="test-from-python", name="vpc", vpc_provider=resource_providers_pb2.VpcProvider(vpcId="default"))))
+    print(stub.AddVpcProvider(resource_providers_pb2.AddVpcProviderRequest(cluster_name="test-from-python", name="vpc", vpc_provider=resource_providers_pb2.VpcProvider())))
 
     print(stub.BuildCluster(cluster_pb2.BuildClusterRequest(cluster_name="test-from-python")))
 
