@@ -64,3 +64,17 @@ class CoreDNSAddOn(_message.Message):
     VERSION_FIELD_NUMBER: _ClassVar[int]
     version: str
     def __init__(self, version: _Optional[str] = ...) -> None: ...
+
+class MetricsServerAddOn(_message.Message):
+    __slots__ = ["createNamespace"]
+    CREATENAMESPACE_FIELD_NUMBER: _ClassVar[int]
+    createNamespace: bool
+    def __init__(self, createNamespace: bool = ...) -> None: ...
+
+class AddMetricsServerAddOnRequest(_message.Message):
+    __slots__ = ["cluster_name", "metrics_server_add_on"]
+    CLUSTER_NAME_FIELD_NUMBER: _ClassVar[int]
+    METRICS_SERVER_ADD_ON_FIELD_NUMBER: _ClassVar[int]
+    cluster_name: str
+    metrics_server_add_on: MetricsServerAddOn
+    def __init__(self, cluster_name: _Optional[str] = ..., metrics_server_add_on: _Optional[_Union[MetricsServerAddOn, _Mapping]] = ...) -> None: ...

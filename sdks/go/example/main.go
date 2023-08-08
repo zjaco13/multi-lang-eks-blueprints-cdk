@@ -25,6 +25,11 @@ func build(client pb.ClusterServiceClient, ctx context.Context) {
 		KubeProxyAddOn: &pb.KubeProxyAddOn{},
 	}))
 
+	fmt.Println(client.AddMetricsServerAddOn(ctx, &pb.AddMetricsServerAddOnRequest{
+		ClusterName:    "test-from-go",
+		MetricsServerAddOn: &pb.MetricsServerAddOn{},
+	}))
+
 	name := "test-cluster-provider"
 	fmt.Println(client.AddMngClusterProvider(ctx, &pb.AddMngClusterProviderRequest{
 		ClusterName:        "test-from-go",

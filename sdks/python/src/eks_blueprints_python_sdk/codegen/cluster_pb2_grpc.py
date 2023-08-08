@@ -88,6 +88,11 @@ class ClusterServiceStub(object):
                 request_serializer=addons__pb2.AddCoreDNSAddOnRequest.SerializeToString,
                 response_deserializer=cluster__pb2.APIResponse.FromString,
                 )
+        self.AddMetricsServerAddOn = channel.unary_unary(
+                '/codegen.ClusterService/AddMetricsServerAddOn',
+                request_serializer=addons__pb2.AddMetricsServerAddOnRequest.SerializeToString,
+                response_deserializer=cluster__pb2.APIResponse.FromString,
+                )
         self.AddAddons = channel.unary_unary(
                 '/codegen.ClusterService/AddAddons',
                 request_serializer=addons__pb2.AddAddonsRequest.SerializeToString,
@@ -182,6 +187,12 @@ class ClusterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def AddMetricsServerAddOn(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def AddAddons(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -259,6 +270,11 @@ def add_ClusterServiceServicer_to_server(servicer, server):
             'AddCoreDNSAddOn': grpc.unary_unary_rpc_method_handler(
                     servicer.AddCoreDNSAddOn,
                     request_deserializer=addons__pb2.AddCoreDNSAddOnRequest.FromString,
+                    response_serializer=cluster__pb2.APIResponse.SerializeToString,
+            ),
+            'AddMetricsServerAddOn': grpc.unary_unary_rpc_method_handler(
+                    servicer.AddMetricsServerAddOn,
+                    request_deserializer=addons__pb2.AddMetricsServerAddOnRequest.FromString,
                     response_serializer=cluster__pb2.APIResponse.SerializeToString,
             ),
             'AddAddons': grpc.unary_unary_rpc_method_handler(
@@ -510,6 +526,23 @@ class ClusterService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/codegen.ClusterService/AddCoreDNSAddOn',
             addons__pb2.AddCoreDNSAddOnRequest.SerializeToString,
+            cluster__pb2.APIResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def AddMetricsServerAddOn(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/codegen.ClusterService/AddMetricsServerAddOn',
+            addons__pb2.AddMetricsServerAddOnRequest.SerializeToString,
             cluster__pb2.APIResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

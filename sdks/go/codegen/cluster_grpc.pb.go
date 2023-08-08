@@ -33,6 +33,7 @@ const (
 	ClusterService_AddAckAddOn_FullMethodName           = "/codegen.ClusterService/AddAckAddOn"
 	ClusterService_AddKubeProxyAddOn_FullMethodName     = "/codegen.ClusterService/AddKubeProxyAddOn"
 	ClusterService_AddCoreDNSAddOn_FullMethodName       = "/codegen.ClusterService/AddCoreDNSAddOn"
+	ClusterService_AddMetricsServerAddOn_FullMethodName = "/codegen.ClusterService/AddMetricsServerAddOn"
 	ClusterService_AddAddons_FullMethodName             = "/codegen.ClusterService/AddAddons"
 )
 
@@ -54,6 +55,7 @@ type ClusterServiceClient interface {
 	AddAckAddOn(ctx context.Context, in *AddAckAddOnRequest, opts ...grpc.CallOption) (*APIResponse, error)
 	AddKubeProxyAddOn(ctx context.Context, in *AddKubeProxyAddOnRequest, opts ...grpc.CallOption) (*APIResponse, error)
 	AddCoreDNSAddOn(ctx context.Context, in *AddCoreDNSAddOnRequest, opts ...grpc.CallOption) (*APIResponse, error)
+	AddMetricsServerAddOn(ctx context.Context, in *AddMetricsServerAddOnRequest, opts ...grpc.CallOption) (*APIResponse, error)
 	AddAddons(ctx context.Context, in *AddAddonsRequest, opts ...grpc.CallOption) (*APIResponse, error)
 }
 
@@ -191,6 +193,15 @@ func (c *clusterServiceClient) AddCoreDNSAddOn(ctx context.Context, in *AddCoreD
 	return out, nil
 }
 
+func (c *clusterServiceClient) AddMetricsServerAddOn(ctx context.Context, in *AddMetricsServerAddOnRequest, opts ...grpc.CallOption) (*APIResponse, error) {
+	out := new(APIResponse)
+	err := c.cc.Invoke(ctx, ClusterService_AddMetricsServerAddOn_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *clusterServiceClient) AddAddons(ctx context.Context, in *AddAddonsRequest, opts ...grpc.CallOption) (*APIResponse, error) {
 	out := new(APIResponse)
 	err := c.cc.Invoke(ctx, ClusterService_AddAddons_FullMethodName, in, out, opts...)
@@ -218,6 +229,7 @@ type ClusterServiceServer interface {
 	AddAckAddOn(context.Context, *AddAckAddOnRequest) (*APIResponse, error)
 	AddKubeProxyAddOn(context.Context, *AddKubeProxyAddOnRequest) (*APIResponse, error)
 	AddCoreDNSAddOn(context.Context, *AddCoreDNSAddOnRequest) (*APIResponse, error)
+	AddMetricsServerAddOn(context.Context, *AddMetricsServerAddOnRequest) (*APIResponse, error)
 	AddAddons(context.Context, *AddAddonsRequest) (*APIResponse, error)
 	mustEmbedUnimplementedClusterServiceServer()
 }
@@ -267,6 +279,9 @@ func (UnimplementedClusterServiceServer) AddKubeProxyAddOn(context.Context, *Add
 }
 func (UnimplementedClusterServiceServer) AddCoreDNSAddOn(context.Context, *AddCoreDNSAddOnRequest) (*APIResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddCoreDNSAddOn not implemented")
+}
+func (UnimplementedClusterServiceServer) AddMetricsServerAddOn(context.Context, *AddMetricsServerAddOnRequest) (*APIResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddMetricsServerAddOn not implemented")
 }
 func (UnimplementedClusterServiceServer) AddAddons(context.Context, *AddAddonsRequest) (*APIResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddAddons not implemented")
@@ -536,6 +551,24 @@ func _ClusterService_AddCoreDNSAddOn_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ClusterService_AddMetricsServerAddOn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddMetricsServerAddOnRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClusterServiceServer).AddMetricsServerAddOn(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ClusterService_AddMetricsServerAddOn_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClusterServiceServer).AddMetricsServerAddOn(ctx, req.(*AddMetricsServerAddOnRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ClusterService_AddAddons_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AddAddonsRequest)
 	if err := dec(in); err != nil {
@@ -616,6 +649,10 @@ var ClusterService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddCoreDNSAddOn",
 			Handler:    _ClusterService_AddCoreDNSAddOn_Handler,
+		},
+		{
+			MethodName: "AddMetricsServerAddOn",
+			Handler:    _ClusterService_AddMetricsServerAddOn_Handler,
 		},
 		{
 			MethodName: "AddAddons",

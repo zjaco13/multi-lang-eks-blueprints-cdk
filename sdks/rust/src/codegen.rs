@@ -236,6 +236,20 @@ pub struct CoreDnsAddOn {
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MetricsServerAddOn {
+    #[prost(bool, optional, tag = "1")]
+    pub create_namespace: ::core::option::Option<bool>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AddMetricsServerAddOnRequest {
+    #[prost(string, tag = "1")]
+    pub cluster_name: ::prost::alloc::string::String,
+    #[prost(message, optional, tag = "2")]
+    pub metrics_server_add_on: ::core::option::Option<MetricsServerAddOn>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ApiResponse {
     #[prost(string, tag = "1")]
     pub message: ::prost::alloc::string::String,
@@ -669,6 +683,30 @@ pub mod cluster_service_client {
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("codegen.ClusterService", "AddCoreDNSAddOn"));
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn add_metrics_server_add_on(
+            &mut self,
+            request: impl tonic::IntoRequest<super::AddMetricsServerAddOnRequest>,
+        ) -> std::result::Result<tonic::Response<super::ApiResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/codegen.ClusterService/AddMetricsServerAddOn",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("codegen.ClusterService", "AddMetricsServerAddOn"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn add_addons(

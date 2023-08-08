@@ -470,6 +470,108 @@ func (x *CoreDNSAddOn) GetVersion() string {
 	return ""
 }
 
+type MetricsServerAddOn struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	CreateNamespace *bool `protobuf:"varint,1,opt,name=createNamespace,proto3,oneof" json:"createNamespace,omitempty"`
+}
+
+func (x *MetricsServerAddOn) Reset() {
+	*x = MetricsServerAddOn{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_addons_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MetricsServerAddOn) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MetricsServerAddOn) ProtoMessage() {}
+
+func (x *MetricsServerAddOn) ProtoReflect() protoreflect.Message {
+	mi := &file_addons_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MetricsServerAddOn.ProtoReflect.Descriptor instead.
+func (*MetricsServerAddOn) Descriptor() ([]byte, []int) {
+	return file_addons_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *MetricsServerAddOn) GetCreateNamespace() bool {
+	if x != nil && x.CreateNamespace != nil {
+		return *x.CreateNamespace
+	}
+	return false
+}
+
+type AddMetricsServerAddOnRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ClusterName        string              `protobuf:"bytes,1,opt,name=cluster_name,json=clusterName,proto3" json:"cluster_name,omitempty"`
+	MetricsServerAddOn *MetricsServerAddOn `protobuf:"bytes,2,opt,name=metrics_server_add_on,json=metricsServerAddOn,proto3" json:"metrics_server_add_on,omitempty"`
+}
+
+func (x *AddMetricsServerAddOnRequest) Reset() {
+	*x = AddMetricsServerAddOnRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_addons_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AddMetricsServerAddOnRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddMetricsServerAddOnRequest) ProtoMessage() {}
+
+func (x *AddMetricsServerAddOnRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_addons_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddMetricsServerAddOnRequest.ProtoReflect.Descriptor instead.
+func (*AddMetricsServerAddOnRequest) Descriptor() ([]byte, []int) {
+	return file_addons_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *AddMetricsServerAddOnRequest) GetClusterName() string {
+	if x != nil {
+		return x.ClusterName
+	}
+	return ""
+}
+
+func (x *AddMetricsServerAddOnRequest) GetMetricsServerAddOn() *MetricsServerAddOn {
+	if x != nil {
+		return x.MetricsServerAddOn
+	}
+	return nil
+}
+
 var File_addons_proto protoreflect.FileDescriptor
 
 var file_addons_proto_rawDesc = []byte{
@@ -523,10 +625,25 @@ var file_addons_proto_rawDesc = []byte{
 	0x4f, 0x6e, 0x22, 0x39, 0x0a, 0x0c, 0x43, 0x6f, 0x72, 0x65, 0x44, 0x4e, 0x53, 0x41, 0x64, 0x64,
 	0x4f, 0x6e, 0x12, 0x1d, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20,
 	0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x88, 0x01,
-	0x01, 0x42, 0x0a, 0x0a, 0x08, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x42, 0x28, 0x5a,
-	0x26, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x7a, 0x6a, 0x61, 0x63,
-	0x6f, 0x31, 0x33, 0x2f, 0x73, 0x64, 0x6b, 0x73, 0x2f, 0x67, 0x6f, 0x2d, 0x73, 0x64, 0x6b, 0x2f,
-	0x63, 0x6f, 0x64, 0x65, 0x67, 0x65, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x01, 0x42, 0x0a, 0x0a, 0x08, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x22, 0x57, 0x0a,
+	0x12, 0x4d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x73, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x41, 0x64,
+	0x64, 0x4f, 0x6e, 0x12, 0x2d, 0x0a, 0x0f, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4e, 0x61, 0x6d,
+	0x65, 0x73, 0x70, 0x61, 0x63, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x48, 0x00, 0x52, 0x0f,
+	0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x70, 0x61, 0x63, 0x65, 0x88,
+	0x01, 0x01, 0x42, 0x12, 0x0a, 0x10, 0x5f, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4e, 0x61, 0x6d,
+	0x65, 0x73, 0x70, 0x61, 0x63, 0x65, 0x22, 0x91, 0x01, 0x0a, 0x1c, 0x41, 0x64, 0x64, 0x4d, 0x65,
+	0x74, 0x72, 0x69, 0x63, 0x73, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x41, 0x64, 0x64, 0x4f, 0x6e,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x6c, 0x75, 0x73, 0x74,
+	0x65, 0x72, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63,
+	0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x4e, 0x0a, 0x15, 0x6d, 0x65,
+	0x74, 0x72, 0x69, 0x63, 0x73, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5f, 0x61, 0x64, 0x64,
+	0x5f, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x63, 0x6f, 0x64, 0x65,
+	0x67, 0x65, 0x6e, 0x2e, 0x4d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x73, 0x53, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x41, 0x64, 0x64, 0x4f, 0x6e, 0x52, 0x12, 0x6d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x73, 0x53,
+	0x65, 0x72, 0x76, 0x65, 0x72, 0x41, 0x64, 0x64, 0x4f, 0x6e, 0x42, 0x28, 0x5a, 0x26, 0x67, 0x69,
+	0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x7a, 0x6a, 0x61, 0x63, 0x6f, 0x31, 0x33,
+	0x2f, 0x73, 0x64, 0x6b, 0x73, 0x2f, 0x67, 0x6f, 0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x63, 0x6f, 0x64,
+	0x65, 0x67, 0x65, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -541,16 +658,18 @@ func file_addons_proto_rawDescGZIP() []byte {
 	return file_addons_proto_rawDescData
 }
 
-var file_addons_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_addons_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_addons_proto_goTypes = []interface{}{
-	(*AddAddonsRequest)(nil),         // 0: codegen.AddAddonsRequest
-	(*Addon)(nil),                    // 1: codegen.Addon
-	(*AddAckAddOnRequest)(nil),       // 2: codegen.AddAckAddOnRequest
-	(*AckAddOn)(nil),                 // 3: codegen.AckAddOn
-	(*AddKubeProxyAddOnRequest)(nil), // 4: codegen.AddKubeProxyAddOnRequest
-	(*KubeProxyAddOn)(nil),           // 5: codegen.KubeProxyAddOn
-	(*AddCoreDNSAddOnRequest)(nil),   // 6: codegen.AddCoreDNSAddOnRequest
-	(*CoreDNSAddOn)(nil),             // 7: codegen.CoreDNSAddOn
+	(*AddAddonsRequest)(nil),             // 0: codegen.AddAddonsRequest
+	(*Addon)(nil),                        // 1: codegen.Addon
+	(*AddAckAddOnRequest)(nil),           // 2: codegen.AddAckAddOnRequest
+	(*AckAddOn)(nil),                     // 3: codegen.AckAddOn
+	(*AddKubeProxyAddOnRequest)(nil),     // 4: codegen.AddKubeProxyAddOnRequest
+	(*KubeProxyAddOn)(nil),               // 5: codegen.KubeProxyAddOn
+	(*AddCoreDNSAddOnRequest)(nil),       // 6: codegen.AddCoreDNSAddOnRequest
+	(*CoreDNSAddOn)(nil),                 // 7: codegen.CoreDNSAddOn
+	(*MetricsServerAddOn)(nil),           // 8: codegen.MetricsServerAddOn
+	(*AddMetricsServerAddOnRequest)(nil), // 9: codegen.AddMetricsServerAddOnRequest
 }
 var file_addons_proto_depIdxs = []int32{
 	1, // 0: codegen.AddAddonsRequest.addons:type_name -> codegen.Addon
@@ -559,11 +678,12 @@ var file_addons_proto_depIdxs = []int32{
 	3, // 3: codegen.AddAckAddOnRequest.ack_add_on:type_name -> codegen.AckAddOn
 	5, // 4: codegen.AddKubeProxyAddOnRequest.kube_proxy_add_on:type_name -> codegen.KubeProxyAddOn
 	7, // 5: codegen.AddCoreDNSAddOnRequest.core_dns_add_on:type_name -> codegen.CoreDNSAddOn
-	6, // [6:6] is the sub-list for method output_type
-	6, // [6:6] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	8, // 6: codegen.AddMetricsServerAddOnRequest.metrics_server_add_on:type_name -> codegen.MetricsServerAddOn
+	7, // [7:7] is the sub-list for method output_type
+	7, // [7:7] is the sub-list for method input_type
+	7, // [7:7] is the sub-list for extension type_name
+	7, // [7:7] is the sub-list for extension extendee
+	0, // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_addons_proto_init() }
@@ -668,6 +788,30 @@ func file_addons_proto_init() {
 				return nil
 			}
 		}
+		file_addons_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MetricsServerAddOn); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_addons_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AddMetricsServerAddOnRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_addons_proto_msgTypes[1].OneofWrappers = []interface{}{
 		(*Addon_AckAddOn)(nil),
@@ -676,13 +820,14 @@ func file_addons_proto_init() {
 	file_addons_proto_msgTypes[3].OneofWrappers = []interface{}{}
 	file_addons_proto_msgTypes[5].OneofWrappers = []interface{}{}
 	file_addons_proto_msgTypes[7].OneofWrappers = []interface{}{}
+	file_addons_proto_msgTypes[8].OneofWrappers = []interface{}{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_addons_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
