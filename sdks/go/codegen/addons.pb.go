@@ -368,6 +368,108 @@ func (x *KubeProxyAddOn) GetVersion() string {
 	return ""
 }
 
+type AddCoreDNSAddOnRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ClusterName  string        `protobuf:"bytes,1,opt,name=cluster_name,json=clusterName,proto3" json:"cluster_name,omitempty"`
+	CoreDnsAddOn *CoreDNSAddOn `protobuf:"bytes,2,opt,name=core_dns_add_on,json=coreDnsAddOn,proto3" json:"core_dns_add_on,omitempty"`
+}
+
+func (x *AddCoreDNSAddOnRequest) Reset() {
+	*x = AddCoreDNSAddOnRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_addons_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AddCoreDNSAddOnRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddCoreDNSAddOnRequest) ProtoMessage() {}
+
+func (x *AddCoreDNSAddOnRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_addons_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddCoreDNSAddOnRequest.ProtoReflect.Descriptor instead.
+func (*AddCoreDNSAddOnRequest) Descriptor() ([]byte, []int) {
+	return file_addons_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *AddCoreDNSAddOnRequest) GetClusterName() string {
+	if x != nil {
+		return x.ClusterName
+	}
+	return ""
+}
+
+func (x *AddCoreDNSAddOnRequest) GetCoreDnsAddOn() *CoreDNSAddOn {
+	if x != nil {
+		return x.CoreDnsAddOn
+	}
+	return nil
+}
+
+type CoreDNSAddOn struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Version *string `protobuf:"bytes,1,opt,name=version,proto3,oneof" json:"version,omitempty"`
+}
+
+func (x *CoreDNSAddOn) Reset() {
+	*x = CoreDNSAddOn{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_addons_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CoreDNSAddOn) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CoreDNSAddOn) ProtoMessage() {}
+
+func (x *CoreDNSAddOn) ProtoReflect() protoreflect.Message {
+	mi := &file_addons_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CoreDNSAddOn.ProtoReflect.Descriptor instead.
+func (*CoreDNSAddOn) Descriptor() ([]byte, []int) {
+	return file_addons_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *CoreDNSAddOn) GetVersion() string {
+	if x != nil && x.Version != nil {
+		return *x.Version
+	}
+	return ""
+}
+
 var File_addons_proto protoreflect.FileDescriptor
 
 var file_addons_proto_rawDesc = []byte{
@@ -410,10 +512,21 @@ var file_addons_proto_rawDesc = []byte{
 	0x62, 0x65, 0x50, 0x72, 0x6f, 0x78, 0x79, 0x41, 0x64, 0x64, 0x4f, 0x6e, 0x12, 0x1d, 0x0a, 0x07,
 	0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52,
 	0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x88, 0x01, 0x01, 0x42, 0x0a, 0x0a, 0x08, 0x5f,
-	0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x42, 0x28, 0x5a, 0x26, 0x67, 0x69, 0x74, 0x68, 0x75,
-	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x7a, 0x6a, 0x61, 0x63, 0x6f, 0x31, 0x33, 0x2f, 0x73, 0x64,
-	0x6b, 0x73, 0x2f, 0x67, 0x6f, 0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x63, 0x6f, 0x64, 0x65, 0x67, 0x65,
-	0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x22, 0x79, 0x0a, 0x16, 0x41, 0x64, 0x64, 0x43, 0x6f,
+	0x72, 0x65, 0x44, 0x4e, 0x53, 0x41, 0x64, 0x64, 0x4f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x5f, 0x6e, 0x61, 0x6d,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72,
+	0x4e, 0x61, 0x6d, 0x65, 0x12, 0x3c, 0x0a, 0x0f, 0x63, 0x6f, 0x72, 0x65, 0x5f, 0x64, 0x6e, 0x73,
+	0x5f, 0x61, 0x64, 0x64, 0x5f, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e,
+	0x63, 0x6f, 0x64, 0x65, 0x67, 0x65, 0x6e, 0x2e, 0x43, 0x6f, 0x72, 0x65, 0x44, 0x4e, 0x53, 0x41,
+	0x64, 0x64, 0x4f, 0x6e, 0x52, 0x0c, 0x63, 0x6f, 0x72, 0x65, 0x44, 0x6e, 0x73, 0x41, 0x64, 0x64,
+	0x4f, 0x6e, 0x22, 0x39, 0x0a, 0x0c, 0x43, 0x6f, 0x72, 0x65, 0x44, 0x4e, 0x53, 0x41, 0x64, 0x64,
+	0x4f, 0x6e, 0x12, 0x1d, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x88, 0x01,
+	0x01, 0x42, 0x0a, 0x0a, 0x08, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x42, 0x28, 0x5a,
+	0x26, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x7a, 0x6a, 0x61, 0x63,
+	0x6f, 0x31, 0x33, 0x2f, 0x73, 0x64, 0x6b, 0x73, 0x2f, 0x67, 0x6f, 0x2d, 0x73, 0x64, 0x6b, 0x2f,
+	0x63, 0x6f, 0x64, 0x65, 0x67, 0x65, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -428,7 +541,7 @@ func file_addons_proto_rawDescGZIP() []byte {
 	return file_addons_proto_rawDescData
 }
 
-var file_addons_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_addons_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_addons_proto_goTypes = []interface{}{
 	(*AddAddonsRequest)(nil),         // 0: codegen.AddAddonsRequest
 	(*Addon)(nil),                    // 1: codegen.Addon
@@ -436,6 +549,8 @@ var file_addons_proto_goTypes = []interface{}{
 	(*AckAddOn)(nil),                 // 3: codegen.AckAddOn
 	(*AddKubeProxyAddOnRequest)(nil), // 4: codegen.AddKubeProxyAddOnRequest
 	(*KubeProxyAddOn)(nil),           // 5: codegen.KubeProxyAddOn
+	(*AddCoreDNSAddOnRequest)(nil),   // 6: codegen.AddCoreDNSAddOnRequest
+	(*CoreDNSAddOn)(nil),             // 7: codegen.CoreDNSAddOn
 }
 var file_addons_proto_depIdxs = []int32{
 	1, // 0: codegen.AddAddonsRequest.addons:type_name -> codegen.Addon
@@ -443,11 +558,12 @@ var file_addons_proto_depIdxs = []int32{
 	5, // 2: codegen.Addon.kube_proxy_add_on:type_name -> codegen.KubeProxyAddOn
 	3, // 3: codegen.AddAckAddOnRequest.ack_add_on:type_name -> codegen.AckAddOn
 	5, // 4: codegen.AddKubeProxyAddOnRequest.kube_proxy_add_on:type_name -> codegen.KubeProxyAddOn
-	5, // [5:5] is the sub-list for method output_type
-	5, // [5:5] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	7, // 5: codegen.AddCoreDNSAddOnRequest.core_dns_add_on:type_name -> codegen.CoreDNSAddOn
+	6, // [6:6] is the sub-list for method output_type
+	6, // [6:6] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_addons_proto_init() }
@@ -528,6 +644,30 @@ func file_addons_proto_init() {
 				return nil
 			}
 		}
+		file_addons_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AddCoreDNSAddOnRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_addons_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CoreDNSAddOn); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_addons_proto_msgTypes[1].OneofWrappers = []interface{}{
 		(*Addon_AckAddOn)(nil),
@@ -535,13 +675,14 @@ func file_addons_proto_init() {
 	}
 	file_addons_proto_msgTypes[3].OneofWrappers = []interface{}{}
 	file_addons_proto_msgTypes[5].OneofWrappers = []interface{}{}
+	file_addons_proto_msgTypes[7].OneofWrappers = []interface{}{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_addons_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

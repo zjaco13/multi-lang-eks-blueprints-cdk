@@ -11,6 +11,8 @@ make run-server
 
 Then run the rust example by cloning this repository and running with make, cargo is required
 ```bash
+git clone https://github.com/zjaco13/multi-lang-eks-blueprints-cdk.git
+cd multi-lang-eks-blueprints-cdk
 make rust-example
 ```
 
@@ -65,7 +67,7 @@ cargo run
 
 From the server, deploy your EKS Blueprint
 ```bash
-npx cdk -a cdk.out/ deploy
+make deploy-server
 ```
 
 

@@ -50,3 +50,17 @@ class KubeProxyAddOn(_message.Message):
     VERSION_FIELD_NUMBER: _ClassVar[int]
     version: str
     def __init__(self, version: _Optional[str] = ...) -> None: ...
+
+class AddCoreDNSAddOnRequest(_message.Message):
+    __slots__ = ["cluster_name", "core_dns_add_on"]
+    CLUSTER_NAME_FIELD_NUMBER: _ClassVar[int]
+    CORE_DNS_ADD_ON_FIELD_NUMBER: _ClassVar[int]
+    cluster_name: str
+    core_dns_add_on: CoreDNSAddOn
+    def __init__(self, cluster_name: _Optional[str] = ..., core_dns_add_on: _Optional[_Union[CoreDNSAddOn, _Mapping]] = ...) -> None: ...
+
+class CoreDNSAddOn(_message.Message):
+    __slots__ = ["version"]
+    VERSION_FIELD_NUMBER: _ClassVar[int]
+    version: str
+    def __init__(self, version: _Optional[str] = ...) -> None: ...

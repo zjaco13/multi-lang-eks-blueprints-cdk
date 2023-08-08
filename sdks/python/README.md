@@ -11,6 +11,8 @@ make run-server
 
 Then run the python example by cloning this repository and running with make, a virtual env with grpcio and protobuf will be created
 ```bash
+git clone https://github.com/zjaco13/multi-lang-eks-blueprints-cdk.git
+cd multi-lang-eks-blueprints-cdk
 make python-example
 ```
 
@@ -63,7 +65,7 @@ python3 main.py
 
 From the server, deploy your EKS Blueprint
 ```bash
-npx cdk -a cdk.out/ deploy
+make deploy-server
 ```
 
 ## Contributing

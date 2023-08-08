@@ -12,6 +12,8 @@ make run-server
 
 Then run the go example by cloning this repository and running with make, go is required
 ```bash
+git clone https://github.com/zjaco13/multi-lang-eks-blueprints-cdk.git
+cd multi-lang-eks-blueprints-cdk
 make go-example
 ```
 
@@ -64,5 +66,5 @@ go run main.go
 
 From the server, deploy your EKS Blueprint
 ```bash
-npx cdk -a cdk.out/ deploy
+make deploy-server
 ```
