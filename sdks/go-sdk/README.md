@@ -78,12 +78,12 @@ A new version should be released whenever the protobufs are changed
 To release a new version for the go sdk, push a new tagged commit to the origin repository e.g
 
 ```bash
-git tag v0.1.2
-git push origin v0.1.2
+git tag sdks/go-sdk/v0.1.2
+git push origin sdks/go-sdk/v0.1.2
 ```
 
 Make the module available on the proxy server using `go list`
 
 ```bash
-GOPROXY=proxy.golang.org go list -m github.com/zjaco13/multi-lang-eks-blueprints-cdk/sdks/go-sdk@v0.1.2
+go list -m github.com/zjaco13/multi-lang-eks-blueprints-cdk/sdks/go-sdk@v0.1.2
 ```
