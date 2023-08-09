@@ -36,7 +36,7 @@ pip install grpcio
 pip install protobuf
 ```
 
-Add this to the main.py file
+Add this to the `main.py` file
 ```python
 from eks_blueprints_python_sdk import builder
 
@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
 ```
 
-Add function calls to the grpc server in the build function to build your EKS Blueprint
+Add function calls to the gRPC server in the build function to build your EKS Blueprint
 
 Run the server
 ```bash
@@ -70,10 +70,55 @@ make deploy-server
 
 ## Contributing
 
-To compile protobufs to python you will need grpcio-tools installed
+Publishing
+
+A new package will need to be released whenever protobufs change.
+
+First make an account on [test.pypi.org](https://test.pypi.org/), and you must be added to the [eks-blueprints-python-sdk project](https://test.pypi.org/project/eks-blueprints-python-sdk/)
+
+This project uses the [setuptools](https://setuptools.pypa.io/en/latest/) build backend.  If not installed, install it with this command
+
 ```bash
-pip install grpcio-tools
+pip install setuptools
 ```
 
+You will also need the build package installed
 
+```bash
+pip install build
+```
+
+Run the build with this command
+
+```bash
+python -m build
+```
+
+This will create a `dist` folder under `multi-lang-eks-blueprints-cdk/sdks/python`
+
+You will need an api token to upload the package to TestPyPI, and you will need to set up a `.pypirc` in your home directory similar to this
+
+```sh
+[distutils]
+index-servers =
+    testpypi
+
+[testpypi]
+username = __token__
+password = <<YOUR_API_TOKEN>>
+```
+
+To upload the package, install twine
+
+```bash
+pip install twine
+```
+
+Run twine to upload all of the archives under dist
+
+```bash
+python -m twine upload --repository testpypi dist/*
+```
+
+Changes to the packaging process can be made by updating the `pyproject.toml` and `MANIFEST.in` files.
 

@@ -2,4 +2,11 @@
 
 Multi-Language framework using protobuf and gRPC for EKS Blueprints for CDK
 
-## How to build with the sdk
+## Contributing
+If changes were made to protobufs you must generate new code. To generate new code, run this command. 
+
+```bash
+make codegen
+```
+
+

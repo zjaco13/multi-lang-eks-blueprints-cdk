@@ -31,7 +31,7 @@ Add this sdk as a library
 go get github.com/zjaco13/multi-lang-eks-blueprints-cdk/sdks/go-sdk
 ```
 
-Add this to a main.go file
+Add this to a `main.go` file
 ```go
 package main
 
@@ -49,7 +49,7 @@ func build(client pb.ClusterServiceClient, ctx context.Context) {
 }
 ```
 
-Add function calls to the grpc server in the build function to build your EKS Blueprint
+Add function calls to the gRPC server in the build function to build your EKS Blueprint
 
 Run the server
 ```bash
@@ -67,4 +67,23 @@ go run main.go
 From the server, deploy your EKS Blueprint
 ```bash
 make deploy-server
+```
+
+## Contributing
+
+#### Publishing
+
+A new version should be released whenever the protobufs are changed
+
+To release a new version for the go sdk, push a new tagged commit to the origin repository e.g
+
+```bash
+git tag v0.1.2
+git push origin v0.1.2
+```
+
+Make the module available on the proxy server using `go list`
+
+```bash
+GOPROXY=proxy.golang.org go list -m github.com/zjaco13/multi-lang-eks-blueprints-cdk/sdks/go-sdk@v0.1.2
 ```
