@@ -5,7 +5,7 @@ VENV := venv
 PIP := $(VENV)/bin/pip
 PYTHON := $(VENV)/bin/python3
 GO_BINARY_NAME := example-main
-GO_SDK:= sdks/go
+GO_SDK:= sdks/go-sdk
 RUST_SDK:= sdks/rust
 PYTHON_SDK:= sdks/python
 
